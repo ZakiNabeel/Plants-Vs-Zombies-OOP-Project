@@ -8,12 +8,14 @@
 using namespace std;
 
 class Game {
-public:
 	Levels* level;
 	int levelNumber;
+	bool plantClicked;
+	sf::RectangleShape grid;
+public:
 	Game();
 	~Game();
 	void run();
+	int getLevelNumber();
 };
 #endif // !Game_h
-

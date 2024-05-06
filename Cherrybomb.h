@@ -4,12 +4,13 @@
 #include "NonShooter.h"
 class Cherrybomb : public NonShooter
 {
+	sf::IntRect rectSourceSprite;
 public:
 	Cherrybomb(int xPos, int yPos, int h, int w, int hp);
 	~Cherrybomb();
-	void movement();
-	void display();
+	void display(sf::RenderWindow & Window);
 	void takeDamage();
 	bool collisionCheck();
+	void magic();
 };
 #endif

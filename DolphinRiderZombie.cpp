@@ -6,7 +6,7 @@ DolphinRiderZombies::DolphinRiderZombies(int xPos, int yPos, int h, int w, int h
 	sf::IntRect rectSourceSprite(0, 0, 16, 16);
 	spriteEntity.sprite.setTexture(spriteEntity.texture);
 	spriteEntity.sprite.setTextureRect(rectSourceSprite);
-	spriteEntity.sprite.setScale(2.0f, 2.0f);
+	spriteEntity.sprite.setScale(5.0f, 6.0f);
 }
 
 DolphinRiderZombies::~DolphinRiderZombies() {}
@@ -14,7 +14,7 @@ DolphinRiderZombies::~DolphinRiderZombies() {}
 void DolphinRiderZombies::movement() {
 	movementLeft();
 	spriteEntity.sprite.setPosition(position.getX(), position.getY());
-	cout << "Moved Dolphin" << endl;
+//	cout << "Moved Dolphin" << endl;
 }
 
 void DolphinRiderZombies::takeDamage() {
@@ -23,7 +23,7 @@ void DolphinRiderZombies::takeDamage() {
 
 void DolphinRiderZombies::display(sf::RenderWindow& Window) {
 	Window.draw(spriteEntity.sprite);
-	cout << "DolphinRiderZombies Displayed" << endl;
+	//cout << "DolphinRiderZombies Displayed" << endl;
 }
 
 

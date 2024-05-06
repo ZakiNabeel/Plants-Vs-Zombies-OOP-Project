@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BeginersGarden.h" />
+    <ClInclude Include="Cherrybomb.h" />
     <ClInclude Include="DancingZombies.h" />
     <ClInclude Include="DolphinRiderZombies.h" />
     <ClInclude Include="Entity.h" />
@@ -28,7 +29,16 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="LawnMover.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="NonShooter.h" />
+    <ClInclude Include="Peashooter.h" />
+    <ClInclude Include="PlantFactory.h" />
+    <ClInclude Include="Plants.h" />
+    <ClInclude Include="Repeater.h" />
+    <ClInclude Include="Shooter.h" />
+    <ClInclude Include="SnowPea.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Sunflower.h" />
+    <ClInclude Include="Tile.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="Moving.h" />
     <ClInclude Include="NormalPea.h" />
@@ -37,29 +47,41 @@
     <ClInclude Include="SimpleZombies.h" />
     <ClInclude Include="Size.h" />
     <ClInclude Include="Sun.h" />
+    <ClInclude Include="Walknut.h" />
     <ClInclude Include="WhitePea.h" />
     <ClInclude Include="Zombie.h" />
     <ClInclude Include="ZombieFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BeginersGarden.cpp" />
+    <ClCompile Include="Cherrybomb.cpp" />
     <ClCompile Include="DancingZombies.cpp" />
     <ClCompile Include="DolphinRiderZombie.cpp" />
     <ClCompile Include="FlyingZombies.cpp" />
     <ClCompile Include="FootballZombies.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="NonShooter.cpp" />
     <ClCompile Include="NormalPea.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="LawnMover.cpp" />
     <ClCompile Include="Moving.cpp" />
     <ClCompile Include="Pea.cpp" />
+    <ClCompile Include="Peashooter.cpp" />
+    <ClCompile Include="PlantFactory.cpp" />
+    <ClCompile Include="Plants.cpp" />
     <ClCompile Include="Position.cpp" />
+    <ClCompile Include="Repeater.cpp" />
+    <ClCompile Include="Shooter.cpp" />
     <ClCompile Include="SimpleZombies.cpp" />
+    <ClCompile Include="SnowPea.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Sun.cpp" />
     <ClCompile Include="Size.cpp" />
+    <ClCompile Include="Sunflower.cpp" />
+    <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="Walknut.cpp" />
     <ClCompile Include="WhitePeacpp.cpp" />
     <ClCompile Include="Zombie.cpp" />
     <ClCompile Include="ZombieFactory.cpp" />

@@ -20,6 +20,7 @@ public:
 	void addZombies(int, int, int, int, int, int);
 	void display(sf::RenderWindow &Window);
 	void updateZombies();
+	void chekCollisionRumble();
 };
 #endif // !ZombieFactory_h
 

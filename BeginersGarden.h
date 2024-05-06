@@ -10,7 +10,6 @@ public:
 	void setNumZombies(int n);
 	void display(sf::RenderWindow& Window);
 	void update();
-
 };
 #endif // !BeginersGarden_h
 

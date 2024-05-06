@@ -6,7 +6,7 @@ FlyingZombies::FlyingZombies(int xPos, int yPos, int h, int w, int hit, int s) :
 	sf::IntRect rectSourceSprite(0, 0, 35, 57);
 	spriteEntity.sprite.setTexture(spriteEntity.texture);
 	spriteEntity.sprite.setTextureRect(rectSourceSprite);
-	spriteEntity.sprite.setScale(1.75f, 1.75f);
+	spriteEntity.sprite.setScale(2.2f, 1.9f);
 }
 
 FlyingZombies::~FlyingZombies() {}
@@ -22,7 +22,7 @@ void FlyingZombies::takeDamage() {
 
 void FlyingZombies::display(sf::RenderWindow& Window) {
 	Window.draw(spriteEntity.sprite);
-	cout << "FlyingZombies Displayed" << endl;
+//	cout << "FlyingZombies Displayed" << endl;
 }
 
 bool FlyingZombies::collisionCheck() { return 1; }

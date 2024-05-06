@@ -8,11 +8,13 @@ SimpleZombies::SimpleZombies(int xPos, int yPos, int h, int w, int hit, int s) :
 	rectSourceSprite.height = 135;
 	spriteEntity.sprite.setTextureRect(rectSourceSprite);
 	spriteEntity.sprite.setPosition(xPos, yPos);
-	spriteEntity.sprite.setScale(0.65f, 0.65f);
+	spriteEntity.sprite.setScale(0.65f, 0.70f);
+	spriteEntity.clockEntity.restart();
 }
 SimpleZombies::~SimpleZombies(){}
 void SimpleZombies::display(sf::RenderWindow & Window) {		
-		if (rectSourceSprite.left == 9200 && spriteEntity.coordinateRightTouch ==false) {
+	if (spriteEntity.clockEntity.getElapsedTime().asMicroseconds()> 0.1) {
+		if (rectSourceSprite.left == 9000 && spriteEntity.coordinateRightTouch == false) {
 			spriteEntity.coordinateRightTouch = true;
 			spriteEntity.coordinateLeftTouch = false;
 			rectSourceSprite.left -=200;
@@ -32,13 +34,14 @@ void SimpleZombies::display(sf::RenderWindow & Window) {
 			rectSourceSprite.left += 200;
 			spriteEntity.sprite.setTextureRect(rectSourceSprite);
 		}
+	}
 	Window.draw(spriteEntity.sprite);
-	cout << "SimpleZombies Displayed" << endl;
+//	cout << "SimpleZombies Displayed" << endl;
 }
 void SimpleZombies::movement() {
 	movementLeft();
 	spriteEntity.sprite.setPosition(position.getX(), position.getY());
-	cout << "SimpleZombies Moved" << endl;
+//	cout << "SimpleZombies Moved" << endl;
 }
 void  SimpleZombies::takeDamage() {
 	hitPoints -= 1;

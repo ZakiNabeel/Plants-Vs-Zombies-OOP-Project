@@ -2,15 +2,16 @@
 #ifndef Repeater_H
 #define Repeater_H
 #include "Shooter.h"
+#include "NormalPea.h"
 class Repeater : public Shooter
 {
-public:
-    void shoot() override {
-        // Implement repeated shooting logic here
-    }	Repeater(int xPos, int yPos, int h, int w, int hit);
+public:	
+	Repeater(int xPos, int yPos, int h, int w, int hit);
 	~Repeater();
 	void takeDamage();
-	void display();
+	void display(sf::RenderWindow & Window);
 	bool collisionCheck();
+	void magic();
+	void generatePea();
 };
 #endif

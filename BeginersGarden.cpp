@@ -1,5 +1,5 @@
 #include"BeginersGarden.h"
-BeginersGarden::BeginersGarden() :Levels(1) {
+BeginersGarden::BeginersGarden() : Levels(1) {
 }
 BeginersGarden::~BeginersGarden() {
 }

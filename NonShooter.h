@@ -8,8 +8,9 @@ public:
 	// Non-shooter specific methods can be added here
 	NonShooter(int xPos, int yPos, int h, int w, int hp);
 	~NonShooter();
-	void display();
+	void display(sf::RenderWindow &Window);
 	bool collisionCheck();
 	void takeDamage();
+	virtual void magic() override;
 };
 #endif

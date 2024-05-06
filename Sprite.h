@@ -5,13 +5,12 @@
 #include <SFML/Graphics.hpp>
 using namespace std;
 class Sprite {
-public:	
+public:
 	sf::Texture texture;
 	sf::Sprite sprite;
 	sf::Clock clockEntity;
 	bool coordinateLeftTouch = 1;
 	bool coordinateRightTouch = 0;
-public:
 	Sprite();
 	~Sprite();
 };

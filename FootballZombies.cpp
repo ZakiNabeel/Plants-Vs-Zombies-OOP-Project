@@ -6,7 +6,7 @@ FootballZombies::FootballZombies(int xPos, int yPos, int h, int w, int hit, int 
 	sf::IntRect rectSourceSprite(0, 0, 40, 50);
 	spriteEntity.sprite.setTexture(spriteEntity.texture);
 	spriteEntity.sprite.setTextureRect(rectSourceSprite);
-	spriteEntity.sprite.setScale(1.75f, 1.75f);
+	spriteEntity.sprite.setScale(2.1f, 2.0f);
 }
 
 FootballZombies::~FootballZombies() {}
@@ -22,7 +22,7 @@ void FootballZombies::takeDamage() {
 
 void FootballZombies::display(sf::RenderWindow& Window) {
 	Window.draw(spriteEntity.sprite);
-	cout << "FootballZombies Displayed" << endl; 
+	//cout << "FootballZombies Displayed" << endl; 
 }
 
 bool FootballZombies::collisionCheck() { return 1; }

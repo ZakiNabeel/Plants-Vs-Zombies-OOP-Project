@@ -7,8 +7,9 @@ class Walknut : public NonShooter
 public:
 	Walknut(int xPos, int yPos, int h, int w, int hp);
 	~Walknut();
-	void display();
+	void display(sf::RenderWindow & Window);
 	void takeDamage();
 	bool collisionCheck();
+	void magic();
 };
 #endif

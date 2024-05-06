@@ -7,7 +7,11 @@ public:
 	Sun(int xPos, int yPos, int h, int w, int hit, int s);
 	~Sun();
 	void movement();
-	void display();
+	void display(sf::RenderWindow & Window);
+	bool collisionCheck();
+	void takeDamage();
+	sf::Sprite getSpriteEntity();
+
 };
 #endif // !Sun_h
 

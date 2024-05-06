@@ -1,13 +1,23 @@
 #include "NonShooter.h"
-NonShooter::NonShooter(int xPos, int yPos, int h, int w, int hp) : Plants(xPos, yPos, h, w, hp) {}
+NonShooter::NonShooter(int xPos, int yPos, int h, int w, int hp) : Plants(xPos, yPos, h, w, hp) {
+	cout << "NonShooter constructor" << endl;
+}
 NonShooter::~NonShooter() {}
-void NonShooter::display() {}
+void NonShooter::display(sf::RenderWindow & Window) {
+	cout << " ";
+	cout << "Display non shooter" << endl;
+}
 bool NonShooter::collisionCheck()
 {
-	return collisionViaZombie();
+	cout << "WalkNut collide";
+	return 1;
 }
 void NonShooter::takeDamage()
+{	
+	cout << "WalkNut hit" << endl;
+	this->hitPoints--;
+}
+void NonShooter::magic()
 {
-	if (collisionCheck())
-		this->hitPoints--;
+	cout << "nonShooter magic" << endl;
 }

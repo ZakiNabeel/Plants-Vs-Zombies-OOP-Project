@@ -12,7 +12,7 @@ DancingZombies::~DancingZombies() {}
 
 void DancingZombies::movement() {
     Moving::movementLeft();
-	cout << "Moved" << endl;
+//	cout << "Moved" << endl;
 }
 
 void DancingZombies::takeDamage() {
@@ -21,7 +21,7 @@ void DancingZombies::takeDamage() {
 
 void DancingZombies::display(sf::RenderWindow & Window) {
     Window.draw(spriteEntity.sprite);
-	cout << "DancingZombies Displayed" << endl;
+//	cout << "DancingZombies Displayed" << endl;
 }
 
 bool DancingZombies::collisionCheck() { return 1; }
