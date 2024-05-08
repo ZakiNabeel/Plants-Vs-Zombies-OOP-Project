@@ -10,7 +10,7 @@ public:
 	~Cherrybomb();
 	void display(sf::RenderWindow & Window);
 	void takeDamage();
-	bool collisionCheck();
+	void collisionCheck(Zombie**& zombieEntities, int);
 	void magic();
 };
 #endif

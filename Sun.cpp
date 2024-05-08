@@ -17,9 +17,8 @@ void Sun::display(sf::RenderWindow & Window){
 void Sun::movement() {
 	if (position.getY() <= 200) movementVertical();
 }
-bool Sun::collisionCheck() {
+void Sun::collisionCheck() {
 	cout << "Sun";
-	return 1;
 }
 void Sun::takeDamage() {
 	cout << "Suncacsssssssssssss";

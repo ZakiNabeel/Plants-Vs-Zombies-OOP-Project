@@ -8,10 +8,11 @@ public:
 	~Sun();
 	void movement();
 	void display(sf::RenderWindow & Window);
-	bool collisionCheck();
+	void collisionCheck();
 	void takeDamage();
 	sf::Sprite getSpriteEntity();
 
 };
 #endif // !Sun_h
 
+ 

@@ -1,5 +1,7 @@
 #include"Pea.h"
-Pea::Pea(int xPos, int yPos, int h, int w, int hit, int s = 1) : Moving(xPos, yPos, h, w, hit, s) {}
+Pea::Pea(int xPos, int yPos, int h, int w, int hit, int s = 1) : Moving(xPos, yPos, h, w, hit, s) {
+	this->isPresent = 0;
+}
 Pea::~Pea(){}
 void Pea::display(sf::RenderWindow & Window){
 	cout << "abs";
@@ -8,9 +10,14 @@ void Pea::movement() {
 	movementRight();
 	cout << "cnuw";
 }
-bool Pea::collisionCheck() {
-	cout<<"jnwe";
-	return 1;
+void Pea::collisionCheck(Zombie**& zombieEntities, int size) {
+	cout << "Pea collision check";
+	for (int i = 0; i < size; i++) {
+		if (zombieEntities[i]->position.getX() == position.getX() && zombieEntities[i]->position.getY() == position.getY()) {
+			zombieEntities[i]->takeDamage();
+			isPresent = 0;
+		}
+	}
 }
 void Pea::takeDamage() {
 	cout << "Peacsssssssssssss";

@@ -5,15 +5,14 @@ Shooter::Shooter(int xPos, int yPos, int h, int w, int hp) : Plants(xPos, yPos, 
 Shooter::~Shooter() {
 	delete[] peaPtr;
 }
-bool Shooter::collisionCheck()
+void Shooter::collisionCheck(Zombie ** &zombieEntities, int size)
 {
-	return collisionViaZombie();
+	cout<<"Coliision Check Shooter"<<endl;
 }
 void Shooter::display(sf::RenderWindow & Window) {}
 
 void Shooter::takeDamage()
 {
-	if (collisionCheck())
 		this->hitPoints--;
 }
 

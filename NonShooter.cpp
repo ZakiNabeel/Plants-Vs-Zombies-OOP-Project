@@ -7,15 +7,10 @@ void NonShooter::display(sf::RenderWindow & Window) {
 	cout << " ";
 	cout << "Display non shooter" << endl;
 }
-bool NonShooter::collisionCheck()
+void NonShooter::collisionCheck(Zombie ** &zombieEntities, int size)
 {
-	cout << "WalkNut collide";
-	return 1;
-}
-void NonShooter::takeDamage()
-{	
-	cout << "WalkNut hit" << endl;
-	this->hitPoints--;
+	cout << "Coliision checkk non shooter" << endl;
+
 }
 void NonShooter::magic()
 {

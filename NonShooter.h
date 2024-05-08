@@ -9,8 +9,8 @@ public:
 	NonShooter(int xPos, int yPos, int h, int w, int hp);
 	~NonShooter();
 	void display(sf::RenderWindow &Window);
-	bool collisionCheck();
+	void collisionCheck(Zombie** & zombieEntities, int);
 	void takeDamage();
-	virtual void magic() override;
+	void magic();
 };
 #endif

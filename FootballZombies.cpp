@@ -25,4 +25,6 @@ void FootballZombies::display(sf::RenderWindow& Window) {
 	//cout << "FootballZombies Displayed" << endl; 
 }
 
-bool FootballZombies::collisionCheck() { return 1; }
+void FootballZombies::collisionCheck(Plants** & plantEntites, int size) {
+	cout << "Collision Check Football Zombie" << endl;
+}

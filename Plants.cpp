@@ -9,7 +9,3 @@ void Plants::takeDamage() {
 void Plants::display(sf::RenderWindow& Window) {
 	cout << "display plants" << endl;
 }
-bool Plants::collisionCheck() {
-	cout << "collision check plants" << endl;
-	return 1;
-}		

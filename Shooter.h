@@ -10,15 +10,16 @@ protected:
 	Pea* peaPtr;
 	int numOfPea;
 public:
+	bool peaGenerated;
 	//virtual void shoot() = 0;
 	Shooter(int xPos, int yPos, int h, int w, int hp);
 	~Shooter();
 	//Pea& getPea() const;
 	void display(sf::RenderWindow& Window);
 	void takeDamage();
-	bool collisionCheck();
+	void collisionCheck(Zombie** &zombieEntities, int);
 	virtual void generatePea() = 0;
-	virtual void magic() override;
+	void magic();
 	void setNumOfPea(int);
 	int getNumOfPea();
 	Pea* getPeaPtr();

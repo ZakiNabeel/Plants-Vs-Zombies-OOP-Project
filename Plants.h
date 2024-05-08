@@ -1,18 +1,17 @@
 #pragma once
 #ifndef Plants_H
 #define Plants_H
-#include "Entity.h"
+#include"Entity.h"
+#include"Zombie.h"
 #include <SFML/Graphics.hpp>
-class Plants : public Entity
-{
-protected:
+class Zombie;	
+class Plants : public Entity{
 public:
 	Plants(int xPos, int yPos, int h, int w, int);
 	~Plants();
-	void takeDamage() = 0;
+	void takeDamage();
 	void display(sf::RenderWindow& Window);
-	bool collisionCheck();
+	virtual void collisionCheck(Zombie** &zombieEntities,int)=0;
 	virtual void magic() = 0;
-	//virtual void magic() = 0;
 };
 #endif

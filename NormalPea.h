@@ -8,7 +8,7 @@ public:
 	NormalPea();
 	~NormalPea();
 	void display(sf::RenderWindow& Window);
-	bool collisionCheck();
+	void collisionCheck(Zombie**& zombieEntities, int);
 	void movement();
 	void takeDamage();
 	sf::Sprite getSpriteEntity();

@@ -11,7 +11,7 @@ public:
 	~Sunflower();
 	void display(sf::RenderWindow& Window);
 	void takeDamage();
-	bool collisionCheck();
+	void collisionCheck(Zombie** & zombieEntities, int);
 	void generateSun();
 	void magic();
 };

@@ -24,5 +24,6 @@ void FlyingZombies::display(sf::RenderWindow& Window) {
 	Window.draw(spriteEntity.sprite);
 //	cout << "FlyingZombies Displayed" << endl;
 }
-
-bool FlyingZombies::collisionCheck() { return 1; }
+void FlyingZombies::collisionCheck(Plants** & plantEntites, int size) {
+	cout << "Collision Check Flying Zombie" << endl;
+}

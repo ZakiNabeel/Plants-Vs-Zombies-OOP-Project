@@ -6,13 +6,12 @@
 #include "NormalPea.h"
 class Peashooter : public Shooter
 {
-	bool peaGenerated;
 public:
 	Peashooter(int xPos, int yPos, int h, int w, int hit);
 	~Peashooter();
 	void takeDamage();
 	void display(sf::RenderWindow & Window);
-	bool collisionCheck();
+	void collisionCheck(Zombie**& zombieEntities,int);
 	void magic();
 	void generatePea();
 };

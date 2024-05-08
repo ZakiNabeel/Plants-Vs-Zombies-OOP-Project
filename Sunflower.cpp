@@ -15,33 +15,54 @@ Sunflower::~Sunflower() {
 }
 void Sunflower::display(sf::RenderWindow & Window) {
 	Window.draw(spriteEntity.sprite);
-	cout << "SunFlower displayed, now get some sunlight" << endl;
-	if (sunGenerated == 1) {
+	//cout << "SunFlower displayed, now get some sunlight" << endl;
+	if (sunGenerated == 1 && sunPtr!=nullptr) {
 		sunPtr[0].display(Window);
 		cout << "SUN SUN SUN SUN SUN SUN SUN SUN SUN SUN SUN SUN SUN SUN SUN SUN" << endl;
 	}
 }
 void Sunflower::takeDamage()
 {
-	if (collisionCheck())
 		this->hitPoints--;
 }
-bool Sunflower::collisionCheck()
+void Sunflower::collisionCheck(Zombie** &zombieEntities, int size)
 {
-	return collisionViaZombie();
+	for (int i = 0; i < size; i++)
+	{
+		if (zombieEntities[i]->position.getX() < position.getX() + 83 && zombieEntities[i]->position.getX() > position.getX() - 83 && zombieEntities[i]->position.getY() == position.getY())
+		{
+			if (spriteEntity.clockEntity.getElapsedTime().asSeconds() >= 2)
+			{
+			cout << "Sunflower has collided with zombie" << endl;
+			takeDamage();
+			spriteEntity.clockEntity.restart();
+		}
+	}
+}
+
 }
 void Sunflower::generateSun()
 {
 	sunPtr = new Sun(position.getX()+83, position.getY(), 1, 1, 0,1);
 	sunGenerated = 1;
+	spriteEntity.clockEntity.restart();
 }
 
 void Sunflower::magic() {
-	if (sunGenerated == 0) {
+	if (sunGenerated == 0 && spriteEntity.clockEntity.getElapsedTime().asSeconds() > 5) {
 		generateSun();
-		cout << "Sunflower (Post Malone) ny bacha dy dia---------------------------------------------------------" << endl;
+		cout << "Sunflower (Post Malone) ny bacha dy dia ---------------------------------------------------------" << endl;
+		spriteEntity.clockEntity.restart();
 	}
 	else {
-		sunPtr->movement();
+		if (spriteEntity.clockEntity.getElapsedTime().asSeconds() < 2 && sunGenerated == 1)
+			sunPtr->movement();
+		else if (spriteEntity.clockEntity.getElapsedTime().asSeconds() > 5 && sunGenerated == 1) { // 5 seconds as an example
+			delete sunPtr;
+			sunPtr = nullptr;
+			sunGenerated = 0;
+			cout << "Sun deleted ---------------------------------------------------------" << endl;
+			spriteEntity.clockEntity.restart();
+		}
 	}
 }

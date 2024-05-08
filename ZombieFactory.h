@@ -3,6 +3,7 @@
 #define ZombieFactory_h
 #include"Entity.h"
 #include"Zombie.h"
+#include"Plants.h"
 #include"SimpleZombies.h"
 #include"FootballZombies.h"
 #include"DolphinRiderZombies.h"
@@ -16,11 +17,13 @@ class ZombieFactory {
 	Zombie** zombiePtr;
 public:
 	ZombieFactory(int);
-	~ZombieFactory();
+	~ZombieFactory();                                              
 	void addZombies(int, int, int, int, int, int);
 	void display(sf::RenderWindow &Window);
 	void updateZombies();
-	void chekCollisionRumble();
+	void chekCollisionRumble(Plants ** &, int);
+	int getSize();
+	Zombie**& getZombiePtr();
 };
 #endif // !ZombieFactory_h
 

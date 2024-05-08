@@ -8,3 +8,11 @@ void Zombie::movement() {
 void Zombie::display(sf::RenderWindow &Window) {
 	cout << " ";
 }
+
+void Zombie::takeDamage() {
+	cout << " ";
+}
+
+void Zombie::collisionCheck( Plants**& plantEntites, int size) {
+	cout << "Zombie Collision Check\n";
+}

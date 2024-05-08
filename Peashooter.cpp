@@ -20,13 +20,29 @@ void Peashooter::takeDamage()
 void Peashooter::display(sf::RenderWindow & Window) {
 	Window.draw(spriteEntity.sprite);
 	cout << "PeaShooter Displayed" << endl;
-	if(peaGenerated==1) peaPtr[0].display(Window);
-
+	for (int i = 0; i < numOfPea; i++) {
+		if (peaPtr[i].isPresent == 1)
+		peaPtr[i].display(Window);
+	}
 }
-bool Peashooter::collisionCheck()
+void Peashooter::collisionCheck( Zombie** &zombieEntities, int size)
 {
-	cout << " inuinduinquifnqeuifnqeuif";
-	return 1;
+	for (int i = 0; i < size; i++)
+	{
+		if (zombieEntities[i]->position.getX() < position.getX() + 83 && zombieEntities[i]->position.getX() > position.getX() - 83 && zombieEntities[i]->position.getY() == position.getY())
+		{
+			if (spriteEntity.clockEntity.getElapsedTime().asSeconds() >= 2) {
+				cout << "Peashooter has collided with zombie" << endl;
+				takeDamage();
+				spriteEntity.clockEntity.restart();
+			}
+		}
+	}
+	if (peaGenerated == 1) {
+		for (int i = 0; i < numOfPea; i++) {
+			peaPtr[i].collisionCheck(zombieEntities, size);
+		}
+	}
 }
 void Peashooter::magic()
 {
@@ -42,4 +58,7 @@ void Peashooter::generatePea()
 	cout << "Pea generated Pea Shooter" << endl;
 	peaPtr = new NormalPea(position.getX()+83, position.getY(), 1, 1, 0, 3);
 	peaGenerated = 1;
+	for (int i = 0; i < numOfPea; i++) {
+		peaPtr[i].isPresent = 1;
+	}
 }

@@ -9,7 +9,7 @@ public:
 	~SnowPea();
 	void display(sf::RenderWindow& Window);
 	void takeDamage();
-	bool collisionCheck();
+	void collisionCheck(Zombie**& zombieEntities, int);
 	void magic();
 	void generatePea();
 };

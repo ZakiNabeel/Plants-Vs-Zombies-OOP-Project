@@ -3,15 +3,17 @@
 #define Zombies_h
 #include"iostream"
 #include"Moving.h"
+#include"Plants.h"
 using namespace std;
+class Plants;
 class Zombie :public Moving {
 public:
 	Zombie(int xPos, int yPos, int h, int w, int hit, int s);
 	~Zombie();
 	void movement();
-	void takeDamage() = 0;
+	void takeDamage();
 	void display(sf::RenderWindow& Window);
-	bool collisionCheck() = 0;
+	void collisionCheck(Plants** & plantEntites,int size);
 };
 #endif // !Zombie_h
 

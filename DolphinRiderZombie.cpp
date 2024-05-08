@@ -27,4 +27,6 @@ void DolphinRiderZombies::display(sf::RenderWindow& Window) {
 }
 
 
-bool DolphinRiderZombies::collisionCheck() { return 1; }
+void DolphinRiderZombies::collisionCheck(Plants** & plantEntites, int size) {
+	cout << "Collision Check Dolphin Zombie" << endl;
+}

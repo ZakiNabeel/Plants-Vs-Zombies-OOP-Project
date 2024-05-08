@@ -2,8 +2,6 @@
 #ifndef Movement_h
 #define Movement_h
 #include"Entity.h"
-#include<iostream>
-using namespace std;
 class Moving:public Entity {
 protected:
 	int speed;

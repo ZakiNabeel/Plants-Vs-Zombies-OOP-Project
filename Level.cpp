@@ -15,7 +15,8 @@ Levels::Levels(int n):numZombies(n*5), zombieFactory(numZombies), plantFactory(n
 	}
 	plantFactory.addGrid(grid);
 	if(n==1)availablePlants(n);
-
+	peaPtr = nullptr;
+	sizePea = 0;
 }
 void Levels::setNumZombies(int n) {
 	this->numZombies = n * 5;
@@ -26,6 +27,7 @@ Levels::~Levels() {
 	}
 	delete[] grid;
 }
+
 
 void Levels::display(sf::RenderWindow &Window) {
 	for (int i = 0; i < 5; i++) {
@@ -87,6 +89,11 @@ PlantFactory& Levels::getPlantFactory() {
 }
 
 void Levels::collisionRumble() {
-	plantFactory.chekCollisionRumble();
-	zombieFactory.checkCollisionRumble();
+	plantFactory.chekCollisionRumble(zombieFactory.getZombiePtr(), zombieFactory.getSize());
+	zombieFactory.chekCollisionRumble(plantFactory.getPlantPtr(),plantFactory.getSize());
+}
+
+
+void Levels::updatePlantFactory(int xPos, int yPos, int h, int w, int hit) {
+	plantFactory.addPlant(xPos,yPos,h,w,hit);
 }

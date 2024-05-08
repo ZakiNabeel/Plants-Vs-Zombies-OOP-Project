@@ -2,6 +2,7 @@
 #ifndef PLANT_FACTORY_H
 #define PLANT_FACTORY_H
 #include "Plants.h"
+#include"Zombie.h"
 #include "Peashooter.h" 
 #include "Sunflower.h"
 #include "Walknut.h"
@@ -16,6 +17,7 @@ class PlantFactory {
 	int levelChecker;
 	Plants** plantPtr;
 	Tile** grid2;
+	int numShooterPlants;
 public:
 	bool sunFlowerSelected;
 	bool peashooterSelected;
@@ -30,8 +32,9 @@ public:
 	void display(sf::RenderWindow& Window);
 	void addGrid(Tile**&);
 	void updatePlant();
-	void chekCollisionRumble();
-
+	void chekCollisionRumble(Zombie ** & zombieEntities, int size);
+	Plants**& getPlantPtr();
+	int getSize();
 };
 
 #endif // PLANT_FACTORY_H

@@ -24,4 +24,6 @@ void DancingZombies::display(sf::RenderWindow & Window) {
 //	cout << "DancingZombies Displayed" << endl;
 }
 
-bool DancingZombies::collisionCheck() { return 1; }
+void DancingZombies::collisionCheck(Plants** & plantEntites, int size) {
+	cout << "Collision Check Dancing Zombie" << endl;
+}

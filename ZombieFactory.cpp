@@ -38,9 +38,20 @@ void ZombieFactory::updateZombies() {
 		}
 	}
 }
-void ZombieFactory::chekCollisionRumble() {
-	for (int i = 0; i < current; i++) {
+void ZombieFactory::chekCollisionRumble(Plants**& plantEntities, int size)
+{
+	for (int i = 0; i < this->current; i++) {
 		if (zombiePtr[i] != nullptr) {
-			(*(zombiePtr[i])).collisionViaPea();
+			(*(zombiePtr[i])).collisionCheck(plantEntities,size);
+		}
 	}
 }
+
+int ZombieFactory::getSize() {
+	return this->size;
+}
+
+Zombie**& ZombieFactory::getZombiePtr() {
+	return zombiePtr;
+}
+

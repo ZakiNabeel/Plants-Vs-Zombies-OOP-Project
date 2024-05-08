@@ -18,14 +18,37 @@ void Repeater::takeDamage()
 	cout << " ";
 	this->hitPoints--;
 }
-bool Repeater::collisionCheck()
+void Repeater::collisionCheck(Zombie** &zombieEntities, int size)
 {
-	cout << "Peashooter collided";
-	return 1;
+	for (int i = 0; i < size; i++)
+	{
+		if (zombieEntities[i]->position.getX() < position.getX() + 83 && zombieEntities[i]->position.getX() > position.getX() - 83 && zombieEntities[i]->position.getY() == position.getY())
+		{
+			if (spriteEntity.clockEntity.getElapsedTime().asSeconds() >= 2) {
+				cout << "Repeater has collided with zombie" << endl;
+				takeDamage();
+				spriteEntity.clockEntity.restart();
+			}
+		}
+	}
+		for (int i = 0; i < numOfPea; i++) {
+			if (peaPtr[i].isPresent == 1)
+			peaPtr[i].collisionCheck(zombieEntities, size);
+		}
 }
 void Repeater::magic()
 {
 	cout << "Repeater has shot lesgooo" << endl;
+	if (peaGenerated == 0) {
+		if(peaPtr==nullptr)generatePea();
+		else {
+			delete[] peaPtr;
+			generatePea();
+		}
+	}
+	else {
+		peaPtr->movement();
+	}
 }
 void Repeater::generatePea() {
 	cout << "Repeater geberating pea" << endl;
@@ -38,4 +61,5 @@ void Repeater::generatePea() {
 		peaPtr[i].setHit(1);
 		peaPtr[i].setSpeed(1);
 	}
+	peaGenerated = 1;
 }

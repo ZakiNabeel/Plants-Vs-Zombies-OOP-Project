@@ -1,4 +1,5 @@
 ﻿#include"Game.h"
+#include"Zombie.h"
 //Drawing the background
 Game::Game() :levelNumber(1), level(new BeginersGarden()){
 	grid.setSize(sf::Vector2f(750, 500));
@@ -34,12 +35,12 @@ void Game::run() {
 			}
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Right) && plantClicked == 1) {
 				cout << "DAN DANA DAN DAN DANA DAN DAN" << endl;
-				level->getPlantFactory().addPlant(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y,1,1,1);
+				level->updatePlantFactory(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y,1,1,1);
 				plantClicked = 0;
 			}	
 			window.clear();
 			level->createBack(window);
-			//window.draw(grid);
+			window.draw(grid);
 			level->update();
 			level->display(window);
 			window.setSize(sf::Vector2u(1400, 600));

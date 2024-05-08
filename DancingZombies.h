@@ -10,7 +10,7 @@ public:
     void movement();
     void takeDamage();
     void display(sf::RenderWindow& Window);
-    bool collisionCheck();
+    void collisionCheck( Plants**& plantEntites, int size);
 };
 
 #endif // !DancingZombies_h

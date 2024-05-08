@@ -17,10 +17,21 @@ void Walknut::display(sf::RenderWindow & Window) {
 	Window.draw(spriteEntity.sprite);
 	cout << "Displayed WalkNutt" << endl;
 }
-bool Walknut::collisionCheck()
+void Walknut::collisionCheck(Zombie**&zombieEntities, int size)
 {
-	cout << "walknut";
-	return 1;
+	for (int i = 0; i < size; i++)
+	{
+		if (zombieEntities[i]->position.getX() < position.getX() + 83 && zombieEntities[i]->position.getX() > position.getX() - 83 && zombieEntities[i]->position.getY() == position.getY())
+		{
+			if (spriteEntity.clockEntity.getElapsedTime().asSeconds() >= 2)
+			{
+				cout<<"Walknut has collided with zombie"<<endl;
+				takeDamage();
+				spriteEntity.clockEntity.restart();
+			}
+		}
+	}	
+	cout << "Walknut Collision Check" << endl;
 }
 void Walknut::magic() {
 	cout << "Walknut Rolled" << endl;

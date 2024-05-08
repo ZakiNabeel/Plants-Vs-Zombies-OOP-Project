@@ -4,13 +4,15 @@
 #include<iostream>
 using namespace std;
 #include"Moving.h"
+#include"Zombie.h"
 class Pea : public Moving {
 public:	
+	bool isPresent;
 	Pea(int xPos, int yPos, int h, int w, int hit, int s);
 	~Pea();
 	void display(sf::RenderWindow& Window);
 	void movement();
-	bool collisionCheck();
+	void collisionCheck(Zombie**& zombieEntities, int);
 	void takeDamage();
 	void setX(int);
 	void setY(int);
@@ -18,6 +20,7 @@ public:
 	void setW(int);
 	void setHit(int);
 	void setSpeed(int);
+	//void isPresent();
 	virtual sf::Sprite getSpriteEntity() = 0;
 
 	//Take Damage is removed

@@ -46,4 +46,6 @@ void SimpleZombies::movement() {
 void  SimpleZombies::takeDamage() {
 	hitPoints -= 1;
 }
-bool  SimpleZombies::collisionCheck(){ return 1; }
+void  SimpleZombies::collisionCheck( Plants** & plantEntites, int size){
+	cout << "Collision Check Simple Zombie" << endl;
+}

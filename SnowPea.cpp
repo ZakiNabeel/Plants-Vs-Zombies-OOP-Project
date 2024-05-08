@@ -16,14 +16,37 @@ void SnowPea::takeDamage() {
 	cout << "Take Damage SnowPea" << endl;
 	
 }
-bool SnowPea::collisionCheck() {
-	cout << "Collision Check Snow Pea" << endl;
-	return 1;
-}
-void SnowPea::generatePea() {
-	cout << "Snow Pea generating Pea" << endl;
-	peaPtr = new WhitePea(position.getX(), position.getY(), 1, 1, 0, 1);
+void SnowPea::collisionCheck(Zombie** &zombieEntities, int size) {
+	cout << "SnowPea Collision Check" << endl;
+	for (int i = 0; i < size; i++) {
+		if (zombieEntities[i]->position.getX() < position.getX() + 83 && zombieEntities[i]->position.getX() > position.getX() - 83 && zombieEntities[i]->position.getY() == position.getY())
+		{
+			if (spriteEntity.clockEntity.getElapsedTime().asSeconds() >= 2) {
+				cout << "SnowPea has collided with zombie" << endl;
+				takeDamage();
+				spriteEntity.clockEntity.restart();
+			}
+		}
+	}
+	for (int i = 0; i < numOfPea; i++) {
+		if(peaPtr[i].isPresent==1)
+		peaPtr[i].collisionCheck(zombieEntities, size);
+	}
 }
 void SnowPea::magic() {
 	cout << "Snow Pea Magic" << endl;
+	cout << "Peashooter has shot" << endl;
+	if (peaGenerated == 0)generatePea();
+	if (peaGenerated == 1) {
+		peaPtr->movement();
+	}
+}
+
+void SnowPea::generatePea() {
+	cout << "Snow Pea generating Pea" << endl;
+	if (peaGenerated == 0) {
+		peaPtr = new WhitePea(position.getX(), position.getY(), 1, 1, 0, 1);
+		peaGenerated = 1;
+	}
+
 }

@@ -12,6 +12,7 @@ PlantFactory::PlantFactory(int n) : size(45), current(0), levelChecker(n) {
 	for (int i = 0; i < 5; i++) {
 		grid2[i] = new Tile[9];
 	}
+	numShooterPlants = 0;
 }
 PlantFactory::~PlantFactory() {
 	for (int i = 0; i < size; i++) {
@@ -36,6 +37,7 @@ void PlantFactory::addPlant(int xPos, int yPos, int h = 1, int w = 1, int hit = 
 						current++;
 						peashooterSelected = 0;
 						cout << "PeaShooter made" << endl;
+						numShooterPlants++;
 					}
 					else if (sunFlowerSelected) {
 						plantPtr[current] = new Sunflower(grid2[i][j].getX(), grid2[i][j].getY(), h, w, hit);
@@ -48,6 +50,7 @@ void PlantFactory::addPlant(int xPos, int yPos, int h = 1, int w = 1, int hit = 
 						current++;
 						repeaterSelected = 0;
 						cout << "Repeater Made" << endl;
+						numShooterPlants++;
 					}
 					else if (cherrybombSelected) {
 						plantPtr[current] = new Cherrybomb(grid2[i][j].getX(), grid2[i][j].getY(), h, w, hit);
@@ -60,6 +63,7 @@ void PlantFactory::addPlant(int xPos, int yPos, int h = 1, int w = 1, int hit = 
 						current++;
 						snowPeaSelected = 0;
 						cout << "SnowPea Made" << endl;
+						numShooterPlants++;
 					}
 				}
 			}
@@ -86,6 +90,18 @@ void PlantFactory::updatePlant() {
 	}
 }
 
-void PlantFactory::chekCollisionRumble() {
+void PlantFactory::chekCollisionRumble(Zombie**& zombieEntities, int size) {
+	for (int i = 0; i < this->current; i++) {
+		if (plantPtr[i] != nullptr) {
+			(*(plantPtr[i])).collisionCheck(zombieEntities, size);
+		}
+	}
+}
 
+Plants** & PlantFactory::getPlantPtr() {
+	return plantPtr;
+}
+
+int PlantFactory::getSize() {
+	return this->size;
 }
