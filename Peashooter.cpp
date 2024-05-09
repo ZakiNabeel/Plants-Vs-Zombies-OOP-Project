@@ -27,10 +27,13 @@ void Peashooter::display(sf::RenderWindow & Window) {
 }
 void Peashooter::collisionCheck( Zombie** &zombieEntities, int size)
 {
+	cout << "--------------------COLLISSION FUNCTOPN CALLED-----------------------" << endl;
 	for (int i = 0; i < size; i++)
 	{
-		if (zombieEntities[i]->position.getX() < position.getX() + 83 && zombieEntities[i]->position.getX() > position.getX() - 83 && zombieEntities[i]->position.getY() == position.getY())
+		if ((zombieEntities[i]->position.getX() >= position.getX() && zombieEntities[i]->position.getX() <= position.getX() + 83) && (zombieEntities[i]->position.getY() == position.getY()))
 		{
+			plantExists = 0;
+			cout << "--------------------COLLISSION DETECTED-----------------------" << endl;
 			if (spriteEntity.clockEntity.getElapsedTime().asSeconds() >= 2) {
 				cout << "Peashooter has collided with zombie" << endl;
 				takeDamage();
@@ -46,6 +49,7 @@ void Peashooter::collisionCheck( Zombie** &zombieEntities, int size)
 }
 void Peashooter::magic()
 {
+	cout << "PeaShooter : " << position.getX() << " " << position.getY() << endl;
 	cout << "Peashooter has shot" << endl;
 	if(peaGenerated==0)generatePea();
 	if (peaGenerated == 1) {

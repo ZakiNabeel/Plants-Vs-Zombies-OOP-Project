@@ -105,3 +105,25 @@ Plants** & PlantFactory::getPlantPtr() {
 int PlantFactory::getSize() {
 	return this->size;
 }
+
+//void PlantFactory::checkExistingPlants() {
+//	for (int i = 0; i < current; i++) {
+//		if ((*(plantPtr[i])).plantExists == 0) {		
+//			plantPtr[i] = nullptr;
+//		}
+//	}
+//}
+void PlantFactory::checkExistingPlants() {
+	int newIndex = 0;
+	for (int i = 0; i < current; i++) {
+		if (plantPtr[i] != nullptr && plantPtr[i]->plantExists == 0) {
+			delete plantPtr[i];
+			plantPtr[i] = nullptr;
+		}
+		else {
+			plantPtr[newIndex++] = plantPtr[i];
+		}
+	}
+	current = newIndex; 
+}
+

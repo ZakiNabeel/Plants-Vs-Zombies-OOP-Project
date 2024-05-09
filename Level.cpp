@@ -30,11 +30,11 @@ Levels::~Levels() {
 
 
 void Levels::display(sf::RenderWindow &Window) {
-	for (int i = 0; i < 5; i++) {
-		for (int j = 0; j < 9; j++) {
-			grid[i][j].display(Window);
-		}
-	}
+	//for (int i = 0; i < 5; i++) {
+	//	for (int j = 0; j < 9; j++) {
+	//		grid[i][j].display(Window);
+	//	}
+	//}
 	zombieFactory.display(Window);
 	drawAvailablePlants(levelNumber,Window);
 	plantFactory.display(Window);
@@ -44,6 +44,7 @@ void Levels::update() {
 	zombieFactory.updateZombies();
 	plantFactory.updatePlant();
 	collisionRumble();
+	plantFactory.checkExistingPlants();
 }
 void Levels::availablePlants(int level) {
 	if (levelNumber == 1) {

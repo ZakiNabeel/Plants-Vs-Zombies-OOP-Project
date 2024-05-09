@@ -35,6 +35,7 @@ public:
 	void chekCollisionRumble(Zombie ** & zombieEntities, int size);
 	Plants**& getPlantPtr();
 	int getSize();
+	void checkExistingPlants();
 };
 
 #endif // PLANT_FACTORY_H

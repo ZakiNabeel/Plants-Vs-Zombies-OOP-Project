@@ -7,6 +7,7 @@
 class Zombie;	
 class Plants : public Entity{
 public:
+	bool plantExists;
 	Plants(int xPos, int yPos, int h, int w, int);
 	~Plants();
 	void takeDamage();

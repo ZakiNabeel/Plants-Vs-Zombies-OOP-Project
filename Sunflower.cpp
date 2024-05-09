@@ -33,7 +33,7 @@ void Sunflower::collisionCheck(Zombie** &zombieEntities, int size)
 		{
 			if (spriteEntity.clockEntity.getElapsedTime().asSeconds() >= 2)
 			{
-			cout << "Sunflower has collided with zombie" << endl;
+			//cout << "Sunflower has collided with zombie" << endl;
 			takeDamage();
 			spriteEntity.clockEntity.restart();
 		}
@@ -49,6 +49,7 @@ void Sunflower::generateSun()
 }
 
 void Sunflower::magic() {
+	cout << "Sunflower : "<<position.getX() << " " << position.getY() << endl;
 	if (sunGenerated == 0 && spriteEntity.clockEntity.getElapsedTime().asSeconds() > 5) {
 		generateSun();
 		cout << "Sunflower (Post Malone) ny bacha dy dia ---------------------------------------------------------" << endl;
