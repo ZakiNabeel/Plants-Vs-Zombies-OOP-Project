@@ -36,7 +36,7 @@ void Game::run() {
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Right) && plantClicked == 1) {
 				cout << "DAN DANA DAN DAN DANA DAN DAN" << endl;
 				level->updatePlantFactory(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y,1,1,1);
-				plantClicked = 0;
+ 				plantClicked = 0;
 			}	
 			window.clear();
 			level->createBack(window);

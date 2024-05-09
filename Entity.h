@@ -18,6 +18,6 @@ public:
 	virtual ~Entity();
 	void takeDamage();
 	virtual void display(sf::RenderWindow& Window)=0;
-	void healthCheck();
+	bool healthCheck();
 };
 #endif // !Entity_h

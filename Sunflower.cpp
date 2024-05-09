@@ -9,6 +9,8 @@ Sunflower::Sunflower(int xPos, int yPos, int h, int w, int hit) : NonShooter(xPo
 	spriteEntity.sprite.setPosition(xPos, yPos);
 	cout << "Sunflower Constructor CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC" << endl;
 	sunGenerated = 0;
+	present = 1;
+	Plants::typeSunFlower = 1;
 }
 Sunflower::~Sunflower() {
 	delete[] sunPtr;
@@ -25,7 +27,7 @@ void Sunflower::takeDamage()
 {
 		this->hitPoints--;
 }
-void Sunflower::collisionCheck(Zombie** &zombieEntities, int size)
+void Sunflower::collisionCheck(Zombie** &zombieEntities, int size, Tile**& grid)
 {
 	for (int i = 0; i < size; i++)
 	{

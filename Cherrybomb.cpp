@@ -7,6 +7,8 @@ Cherrybomb::Cherrybomb(int xPos, int yPos, int h, int w, int hp) : NonShooter(xP
 	spriteEntity.sprite.setTextureRect(rectSourceSprite);
 	spriteEntity.sprite.setScale(2.0f, 2.0f);
 	spriteEntity.sprite.setPosition(xPos, yPos);
+	present = 1;
+	Plants::typeCherryBomb = 1;
 }
 Cherrybomb::~Cherrybomb() {}
 void Cherrybomb::display(sf::RenderWindow& Window) {
@@ -18,7 +20,7 @@ void Cherrybomb::takeDamage()
 	cout << "     ";
 	this->hitPoints -= 1;
 }
-void Cherrybomb::collisionCheck(Zombie**& zombieEntities, int size) {
+void Cherrybomb::collisionCheck(Zombie**& zombieEntities, int size, Tile**& grid) {
 	for (int i = 0; i < size; i++)
 	{
 		if (zombieEntities[i]->position.getX() < position.getX() + 83 && zombieEntities[i]->position.getX() > position.getX() - 83 && zombieEntities[i]->position.getY() == position.getY())

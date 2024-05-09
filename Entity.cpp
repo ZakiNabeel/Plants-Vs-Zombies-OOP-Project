@@ -12,6 +12,7 @@ void Entity::takeDamage() {
 }
 bool collisionViaCherryBomb(){ return 1; }
 
-void Entity::healthCheck() {
-if (this->hitPoints == 0) this->~Entity();
+bool Entity::healthCheck() {
+	if (this->hitPoints == 0) return 1;
+	else return 0;
 }

@@ -6,6 +6,8 @@ Walknut::Walknut(int xPos, int yPos, int h, int w, int hit) : NonShooter(xPos, y
 	spriteEntity.sprite.setTextureRect(rectSourceSprite);
 	spriteEntity.sprite.setScale(2.0f, 2.0f);
 	spriteEntity.sprite.setPosition(xPos, yPos);
+	present = 1;
+	Plants::typeWalknut = 1;
 }
 Walknut::~Walknut() {}
 void Walknut::takeDamage()
@@ -17,7 +19,7 @@ void Walknut::display(sf::RenderWindow & Window) {
 	Window.draw(spriteEntity.sprite);
 	cout << "Displayed WalkNutt" << endl;
 }
-void Walknut::collisionCheck(Zombie**&zombieEntities, int size)
+void Walknut::collisionCheck(Zombie**&zombieEntities, int size, Tile**& grid)
 {
 	for (int i = 0; i < size; i++)
 	{

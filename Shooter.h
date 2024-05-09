@@ -17,7 +17,7 @@ public:
 	//Pea& getPea() const;
 	void display(sf::RenderWindow& Window);
 	void takeDamage();
-	void collisionCheck(Zombie** &zombieEntities, int);
+	void collisionCheck(Zombie** &zombieEntities, int, Tile**& grid);
 	virtual void generatePea() = 0;
 	void magic();
 	void setNumOfPea(int);

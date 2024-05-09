@@ -43,7 +43,7 @@ void Levels::display(sf::RenderWindow &Window) {
 void Levels::update() {
 	zombieFactory.updateZombies();
 	plantFactory.updatePlant();
-	collisionRumble();
+	collisionRumble(grid);
 	plantFactory.checkExistingPlants();
 }
 void Levels::availablePlants(int level) {
@@ -89,8 +89,8 @@ PlantFactory& Levels::getPlantFactory() {
 	return plantFactory;
 }
 
-void Levels::collisionRumble() {
-	plantFactory.chekCollisionRumble(zombieFactory.getZombiePtr(), zombieFactory.getSize());
+void Levels::collisionRumble(Tile ** & grid) {
+	plantFactory.chekCollisionRumble(zombieFactory.getZombiePtr(), zombieFactory.getSize(), grid);
 	zombieFactory.chekCollisionRumble(plantFactory.getPlantPtr(),plantFactory.getSize());
 }
 

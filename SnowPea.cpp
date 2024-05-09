@@ -7,6 +7,8 @@ SnowPea::SnowPea(int xPos, int yPos, int h, int w, int hp):Shooter(xPos,yPos,h,w
 	spriteEntity.sprite.setTextureRect(rectSourceSprite);
 	spriteEntity.sprite.setScale(2.0f, 2.0f);
 	spriteEntity.sprite.setPosition(xPos, yPos);
+	present = 1;
+	Plants::typeSnowPea = 1;
 }
 SnowPea::~SnowPea(){}
 void SnowPea::display(sf::RenderWindow& Window) {
@@ -16,7 +18,7 @@ void SnowPea::takeDamage() {
 	cout << "Take Damage SnowPea" << endl;
 	
 }
-void SnowPea::collisionCheck(Zombie** &zombieEntities, int size) {
+void SnowPea::collisionCheck(Zombie** &zombieEntities, int size, Tile**& grid) {
 	cout << "SnowPea Collision Check" << endl;
 	for (int i = 0; i < size; i++) {
 		if (zombieEntities[i]->position.getX() < position.getX() + 83 && zombieEntities[i]->position.getX() > position.getX() - 83 && zombieEntities[i]->position.getY() == position.getY())

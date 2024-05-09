@@ -6,11 +6,13 @@
 class Repeater : public Shooter
 {
 public:	
+	bool present;
+ 
 	Repeater(int xPos, int yPos, int h, int w, int hit);
 	~Repeater();
 	void takeDamage();
 	void display(sf::RenderWindow & Window);
-	void collisionCheck(Zombie**& zombieEntities, int);
+	void collisionCheck(Zombie**& zombieEntities, int, Tile ** & grid);
 	void magic();
 	void generatePea();
 };

@@ -7,12 +7,14 @@
 class Peashooter : public Shooter
 {
 public:
+	bool present;
 	Peashooter(int xPos, int yPos, int h, int w, int hit);
 	~Peashooter();
 	void takeDamage();
 	void display(sf::RenderWindow & Window);
-	void collisionCheck(Zombie**& zombieEntities,int);
+	void collisionCheck(Zombie**& zombieEntities,int, Tile**& grid);
 	void magic();
 	void generatePea();
+	bool isPresent();
 };
 #endif

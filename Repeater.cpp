@@ -6,6 +6,8 @@ Repeater::Repeater(int xPos, int yPos, int h, int w, int hit) : Shooter(xPos, yP
 	spriteEntity.sprite.setTextureRect(rectSourceSprite);
 	spriteEntity.sprite.setScale(2.0f, 2.0f);
 	spriteEntity.sprite.setPosition(xPos, yPos);
+	present = 1;
+	Plants::typeRepeater = 1;
 
 }
 Repeater::~Repeater() {}
@@ -18,7 +20,7 @@ void Repeater::takeDamage()
 	cout << " ";
 	this->hitPoints--;
 }
-void Repeater::collisionCheck(Zombie** &zombieEntities, int size)
+void Repeater::collisionCheck(Zombie** &zombieEntities, int size, Tile**& grid)
 {
 	for (int i = 0; i < size; i++)
 	{

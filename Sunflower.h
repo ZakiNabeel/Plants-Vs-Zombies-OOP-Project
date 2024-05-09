@@ -7,11 +7,13 @@ class Sunflower : public NonShooter{
 	Sun* sunPtr;
 	bool sunGenerated;
 public:
+	bool present;
+
 	Sunflower(int xPos, int yPos, int h, int w, int hit);
 	~Sunflower();
 	void display(sf::RenderWindow& Window);
 	void takeDamage();
-	void collisionCheck(Zombie** & zombieEntities, int);
+	void collisionCheck(Zombie** & zombieEntities, int, Tile**& grid);
 	void generateSun();
 	void magic();
 };

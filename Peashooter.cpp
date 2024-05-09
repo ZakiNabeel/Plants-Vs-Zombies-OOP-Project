@@ -10,6 +10,8 @@ Peashooter::Peashooter(int xPos, int yPos, int h, int w, int hit) : Shooter(xPos
 	cout << "Peashooter Constructor CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC" << endl;
 	peaGenerated = 0;
 	Shooter::numOfPea = 1;
+	present = 1;
+	Plants::typePeaShooter = 1;
 }
 Peashooter::~Peashooter() {}
 void Peashooter::takeDamage()
@@ -17,7 +19,13 @@ void Peashooter::takeDamage()
 	cout << "     ";
 	this->hitPoints--;
 }
+bool Peashooter::isPresent() {
+	return this->present;
+}
+
+
 void Peashooter::display(sf::RenderWindow & Window) {
+	if(isPresent())
 	Window.draw(spriteEntity.sprite);
 	cout << "PeaShooter Displayed" << endl;
 	for (int i = 0; i < numOfPea; i++) {
@@ -25,18 +33,38 @@ void Peashooter::display(sf::RenderWindow & Window) {
 		peaPtr[i].display(Window);
 	}
 }
-void Peashooter::collisionCheck( Zombie** &zombieEntities, int size)
+void Peashooter::collisionCheck( Zombie** &zombieEntities, int size, Tile**& grid)
 {
 	cout << "--------------------COLLISSION FUNCTOPN CALLED-----------------------" << endl;
 	for (int i = 0; i < size; i++)
 	{
-		if ((zombieEntities[i]->position.getX() >= position.getX() && zombieEntities[i]->position.getX() <= position.getX() + 83) && (zombieEntities[i]->position.getY() == position.getY()))
+		if ((zombieEntities[i]->position.getX() >= position.getX() && zombieEntities[i]->position.getX() <= position.getX() + 10) && (zombieEntities[i]->position.getY() == position.getY()))
 		{
-			plantExists = 0;
+			for (int i = 0; i < 5; i++) {
+				for (int j = 0; j < 9; j++) {
+					if (grid[i][j].getX() == position.getX() && grid[i][j].getY() == position.getY()) {
+						grid[i][j].checkPlant=0;
+					}
+				}
+			}
+			
+			position.setX(-100);
+			position.setY(-100);
+			zombieEntities[i]->movementRight();
+			//spriteEntity.clockEntity.restart();
 			cout << "--------------------COLLISSION DETECTED-----------------------" << endl;
 			if (spriteEntity.clockEntity.getElapsedTime().asSeconds() >= 2) {
 				cout << "Peashooter has collided with zombie" << endl;
+				plantExists = 0;
+				present = 0;	
+				position.setX(-100);
+				position.setY(-100);
 				takeDamage();
+				if (healthCheck())
+				{
+					plantExists = 0;
+					present = 0;
+				}
 				spriteEntity.clockEntity.restart();
 			}
 		}

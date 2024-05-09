@@ -35,7 +35,7 @@ public:
 	void drawAvailablePlants(int, sf::RenderWindow& Window);
 	bool checkMouseClick(sf::RenderWindow& Window, int, int);
 	PlantFactory& getPlantFactory();
-	void collisionRumble();
+	void collisionRumble(Tile ** &);
 	void updatePlantFactory(int, int, int, int, int);
 	//Tile** getGrid();
 };
