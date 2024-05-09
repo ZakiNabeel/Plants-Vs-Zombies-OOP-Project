@@ -29,8 +29,11 @@ void Peashooter::display(sf::RenderWindow & Window) {
 	Window.draw(spriteEntity.sprite);
 	cout << "PeaShooter Displayed" << endl;
 	for (int i = 0; i < numOfPea; i++) {
-		if (peaPtr[i].isPresent == 1)
+		if (peaPtr[i].isPresent== 1)
 		peaPtr[i].display(Window);
+		else {
+			peaGenerated = 0;
+		}
 	}
 }
 void Peashooter::collisionCheck( Zombie** &zombieEntities, int size, Tile**& grid)
