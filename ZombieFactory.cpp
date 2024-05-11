@@ -42,5 +42,6 @@ void ZombieFactory::chekCollisionRumble() {
 	for (int i = 0; i < current; i++) {
 		if (zombiePtr[i] != nullptr) {
 			(*(zombiePtr[i])).collisionViaPea();
+		}
 	}
 }

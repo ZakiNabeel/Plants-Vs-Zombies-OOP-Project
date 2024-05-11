@@ -88,5 +88,5 @@ PlantFactory& Levels::getPlantFactory() {
 
 void Levels::collisionRumble() {
 	plantFactory.chekCollisionRumble();
-	zombieFactory.checkCollisionRumble();
+	//zombieFactory.checkCollisionRumble();
 }
