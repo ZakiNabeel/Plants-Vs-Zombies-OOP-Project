@@ -4,7 +4,7 @@ Button::Button(const std::string& label, float width, float height, float posX, 
     shape.setSize(sf::Vector2f(width, height));
     shape.setPosition(sf::Vector2f(posX, posY));
 
-    font.loadFromFile("D:\\Visual Studio\\ProjectPVZ\\ProjectPVZ\\SFUIText-Bold.ttf");  // Ensure the font file path is correct
+    font.loadFromFile("SFUIText-Bold.ttf");  // Ensure the font file path is correct
     text.setFont(font);
     text.setString(label);
     text.setCharacterSize(24);  // Adjust size as needed

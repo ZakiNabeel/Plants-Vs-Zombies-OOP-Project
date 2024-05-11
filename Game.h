@@ -5,13 +5,15 @@
 #include "Screen.h"
 #include"BeginersGarden.h"
 #include "MenuScreen.h"
+#include "InstructionScreen.h"
 #include <SFML/Graphics.hpp>
 #include <ctime>
 using namespace std;
 
 class Game {
 	Levels* level;
-	Screen* screens;
+	MenuScreen menuScreen;
+	InstructionScreen instructionScreen;
 	int levelNumber;
 	bool plantClicked;
 	sf::RectangleShape grid;

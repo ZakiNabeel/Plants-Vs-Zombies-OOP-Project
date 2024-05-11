@@ -1,6 +1,6 @@
 ﻿#include"Game.h"
 //Drawing the background
-Game::Game() :levelNumber(1), level(new BeginersGarden()), screens(new MenuScreen()){
+Game::Game() :levelNumber(1), level(new BeginersGarden()){
 	grid.setSize(sf::Vector2f(750, 500));
 	grid.setPosition(250, 80);
 	grid.setFillColor(sf::Color::Transparent);
@@ -16,10 +16,9 @@ int Game::getLevelNumber() {
 }
 void Game::run() {
     sf::RenderWindow window(sf::VideoMode(1400, 600), "Plants Vs Zombies");
-    //	window.setFramerateLimit(144);
     sf::Event event;
-    sf::Clock clock;
-    bool gameStarted = false;  // Flag to track if the game has started
+    bool gameStarted = false;
+    bool instructionSelected = false;
 
     while (window.isOpen()) {
         while (window.pollEvent(event)) {
@@ -27,20 +26,20 @@ void Game::run() {
                 window.close();
             }
 
-            // Here, check if the play button in the menu screen was clicked
-            if (!gameStarted && event.type == sf::Event::MouseButtonReleased) {
-                // Ensure we're dealing with the left mouse button
-                if (event.mouseButton.button == sf::Mouse::Left) {
-                    // Safely cast screens to MenuScreen and check the button click
-                    MenuScreen* menuScreen = dynamic_cast<MenuScreen*>(screens);
-                    if (menuScreen && menuScreen->getPlayButton().wasClicked(window, event)) {
-                        gameStarted = true;  // Set the game to start
-                        levelNumber = 1;  // Optionally set which level to start
+            if (!gameStarted && event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left) {
+                if (!instructionSelected) {
+                    if (menuScreen.getPlayButton().wasClicked(window, event)) {
+                        gameStarted = true;  // Start the game
                     }
+                    else if (menuScreen.getInstructionButton().wasClicked(window, event)) {
+                        instructionSelected = true;  // Display instructions
+                    }
+                }
+                else if (instructionScreen.getBackButton().wasClicked(window, event)) {
+                    instructionSelected = false;  // Go back to menu
                 }
             }
         }
-
 
         window.clear();
         if (gameStarted) {
@@ -60,12 +59,15 @@ void Game::run() {
                 level->display(window);
             }
         }
-        else {
-            // If the game has not started, draw the menu screen
-            screens->draw(window);
+        if (gameStarted) {
+            // Game logic here
         }
-        window.setSize(sf::Vector2u(1400, 600));
+        else if (instructionSelected) {
+            instructionScreen.draw(window);
+        }
+        else {
+            menuScreen.draw(window);
+        }
         window.display();
     }
 }
-

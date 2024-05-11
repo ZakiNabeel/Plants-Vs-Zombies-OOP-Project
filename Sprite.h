@@ -4,7 +4,8 @@
 #include<iostream>
 #include <SFML/Graphics.hpp>
 using namespace std;
-class Sprite {
+class Sprite 
+{
 public:
 	sf::Texture texture;
 	sf::Sprite sprite;
