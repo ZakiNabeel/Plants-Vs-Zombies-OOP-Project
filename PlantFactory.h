@@ -32,7 +32,7 @@ public:
 	void display(sf::RenderWindow& Window);
 	void addGrid(Tile**&);
 	void updatePlant(int & coins1);
-	void chekCollisionRumble(Zombie ** & zombieEntities, int size, Tile**& grid);
+	void chekCollisionRumble(Zombie ** & zombieEntities, int size, Tile**& grid, int & numZom);
 	Plants**& getPlantPtr();
 	int getSize();
 	void checkExistingPlants();

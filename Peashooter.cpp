@@ -7,7 +7,6 @@ Peashooter::Peashooter(int xPos, int yPos, int h, int w, int hit) : Shooter(xPos
 	spriteEntity.sprite.setTextureRect(rectSourceSprite);
 	spriteEntity.sprite.setScale(0.8f, 0.8f);
 	spriteEntity.sprite.setPosition(xPos, yPos);
-	cout << "Peashooter Constructor CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC" << endl;
 	peaGenerated = 0;
 	Shooter::numOfPea = 1;
 	present = 1;
@@ -28,15 +27,13 @@ bool Peashooter::isPresent() {
 void Peashooter::display(sf::RenderWindow & Window) {
 	if(isPresent())
 	Window.draw(spriteEntity.sprite);
-	cout << "PeaShooter Displayed" << endl;
 	for (int i = 0; i < numOfPea; i++) {
 		if (peaPtr != nullptr && peaGenerated==1)
 		peaPtr[i].display(Window);
 	}
 }
-void Peashooter::collisionCheck( Zombie** &zombieEntities, int size, Tile**& grid)
+void Peashooter::collisionCheck( Zombie** &zombieEntities, int size, Tile**& grid, int& numZom)
 {
-	cout << "--------------------COLLISSION FUNCTOPN CALLED-----------------------" << endl;
 	for (int i = 0; i < size; i++)
 	{
 		if ((zombieEntities[i]->position.getX() >= position.getX() && zombieEntities[i]->position.getX() <= position.getX() + 10) && (zombieEntities[i]->position.getY() >= position.getY()-20)&&(zombieEntities[i]->position.getY() <= position.getY() + 20))
@@ -50,9 +47,7 @@ void Peashooter::collisionCheck( Zombie** &zombieEntities, int size, Tile**& gri
 			}	
 			zombieEntities[i]->movementRight();
 			hitPoints--;
-			cout << "--------------------COLLISSION DETECTED-----------------------" << endl;
 			if (hitPoints==0) {
-				cout << "Peashooter has collided with zombie" << endl;
 				plantExists = 0;
 				present = 0;	
 				position.setX(-100);
@@ -69,7 +64,7 @@ void Peashooter::collisionCheck( Zombie** &zombieEntities, int size, Tile**& gri
 	}
 	if (peaGenerated == 1) {
 		for (int i = 0; i < numOfPea; i++) {
-			peaPtr[i].collisionCheck(zombieEntities, size, peaGenerated);
+			peaPtr[i].collisionCheck(zombieEntities, size, peaGenerated,numZom);
 		}
 	}
 }
@@ -84,9 +79,6 @@ void Peashooter::collisionCheck( Zombie** &zombieEntities, int size, Tile**& gri
 //}
 void Peashooter::magic(int& coins1)
 {
-    cout << "PeaShooter : " << position.getX() << " " << position.getY() << endl;
-    cout << "Peashooter has shot" << endl;
-
     // Check if 10 seconds have elapsed since the last pea was generated
     if (peaGenerated == 0 && spriteEntity.clockEntity.getElapsedTime().asSeconds() >= 10) {
         // Generate a new pea

@@ -26,10 +26,13 @@ protected:
 	//Sun** sunPtr;
 	Pea* peaPtr;
 	int sizePea;
+	int waveNumber;
 public:
+	int numZombies;
 	Levels(int);
 	virtual void createBack(sf::RenderWindow& window) = 0;
 	~Levels();
+	void checkNewWave();
 	void display(sf::RenderWindow & Window);
 	void update(int& coins1);
 	void availablePlants(int);

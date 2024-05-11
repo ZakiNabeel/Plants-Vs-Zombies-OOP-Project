@@ -13,7 +13,7 @@ public:
 	~LawnMover();
 	void movement();
 	void display(sf::RenderWindow & window);
-	void collisionCheck(Zombie**& zombieEntities, int);
+	void collisionCheck(Zombie**& zombieEntities, int, int& numZom);
 	bool healthCheck();
 	//Function Take Damage removed
 };

@@ -19,7 +19,7 @@ void Walknut::display(sf::RenderWindow & Window) {
 	Window.draw(spriteEntity.sprite);
 	cout << "Displayed WalkNutt" << endl;
 }
-void Walknut::collisionCheck(Zombie**&zombieEntities, int size, Tile**& grid)
+void Walknut::collisionCheck(Zombie**&zombieEntities, int size, Tile**& grid, int& numZom)
 {
 	for (int i = 0; i < size; i++)
 	{

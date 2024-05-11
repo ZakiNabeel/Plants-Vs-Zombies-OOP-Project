@@ -5,7 +5,7 @@ Shooter::Shooter(int xPos, int yPos, int h, int w, int hp) : Plants(xPos, yPos, 
 Shooter::~Shooter() {
 	delete[] peaPtr;
 }
-void Shooter::collisionCheck(Zombie ** &zombieEntities, int size, Tile**& grid)
+void Shooter::collisionCheck(Zombie ** &zombieEntities, int size, Tile**& grid, int& numZom)
 {
 	cout<<"Coliision Check Shooter"<<endl;
 }

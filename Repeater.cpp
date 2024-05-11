@@ -20,7 +20,7 @@ void Repeater::takeDamage()
 	cout << " ";
 	this->hitPoints--;
 }
-void Repeater::collisionCheck(Zombie** &zombieEntities, int size, Tile**& grid)
+void Repeater::collisionCheck(Zombie** &zombieEntities, int size, Tile**& grid, int& numZom)
 {
 	for (int i = 0; i < size; i++)
 	{
@@ -35,7 +35,7 @@ void Repeater::collisionCheck(Zombie** &zombieEntities, int size, Tile**& grid)
 	}
 		for (int i = 0; i < numOfPea; i++) {
 			if (peaPtr[i].isPresent == 1)
-			peaPtr[i].collisionCheck(zombieEntities, size,peaGenerated);
+			peaPtr[i].collisionCheck(zombieEntities, size,peaGenerated,numZom);
 		}
 }
 void Repeater::magic(int& coins1)

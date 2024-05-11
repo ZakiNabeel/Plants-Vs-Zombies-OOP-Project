@@ -21,7 +21,6 @@ PlantFactory::~PlantFactory() {
 	delete[] plantPtr;
 }
 void PlantFactory::addPlant(int xPos, int yPos, int h, int w, int hit, int& coins1){
-	cout << "coins===========================" <<coins1 << endl;
 	
 	Plants** temp = new Plants * [size + 1];
 	for (int i = 0; i < size; ++i) {
@@ -112,10 +111,10 @@ void PlantFactory::updatePlant(int& coins1) {
 	} 
 }
 
-void PlantFactory::chekCollisionRumble(Zombie**& zombieEntities, int size, Tile**& grid) {
+void PlantFactory::chekCollisionRumble(Zombie**& zombieEntities, int size, Tile**& grid, int& numZom) {
 	for (int i = 0; i < this->current; i++) {
 		if (plantPtr[i] != nullptr) {
-			(*(plantPtr[i])).collisionCheck(zombieEntities, size,grid);
+			(*(plantPtr[i])).collisionCheck(zombieEntities, size,grid,numZom);
 		}
 	}
 }

@@ -69,6 +69,7 @@ void Game::run() {
 				sunPtr->movement();
 				sunPtr->display(window);
 			}
+			level->checkNewWave();
 			window.setSize(sf::Vector2u(1400, 600));
 			window.display();
 		}

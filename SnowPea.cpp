@@ -18,7 +18,7 @@ void SnowPea::takeDamage() {
 	cout << "Take Damage SnowPea" << endl;
 	
 }
-void SnowPea::collisionCheck(Zombie** &zombieEntities, int size, Tile**& grid) {
+void SnowPea::collisionCheck(Zombie** &zombieEntities, int size, Tile**& grid, int& numZom) {
 	cout << "SnowPea Collision Check" << endl;
 	for (int i = 0; i < size; i++) {
 		if (zombieEntities[i]->position.getX() < position.getX() + 83 && zombieEntities[i]->position.getX() > position.getX() - 83 && zombieEntities[i]->position.getY() == position.getY())
@@ -32,7 +32,7 @@ void SnowPea::collisionCheck(Zombie** &zombieEntities, int size, Tile**& grid) {
 	}
 	for (int i = 0; i < numOfPea; i++) {
 		if(peaPtr[i].isPresent==1)
-		peaPtr[i].collisionCheck(zombieEntities, size,peaGenerated);
+		peaPtr[i].collisionCheck(zombieEntities, size,peaGenerated,numZom);
 	}
 }
 void SnowPea::magic(int& coins1) {

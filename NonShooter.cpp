@@ -7,7 +7,7 @@ void NonShooter::display(sf::RenderWindow & Window) {
 	cout << " ";
 	cout << "Display non shooter" << endl;
 }
-void NonShooter::collisionCheck(Zombie ** &zombieEntities, int size, Tile**& grid)
+void NonShooter::collisionCheck(Zombie ** &zombieEntities, int size, Tile**& grid, int& numZom)
 {
 	cout << "Coliision checkk non shooter" << endl;
 

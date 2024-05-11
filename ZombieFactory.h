@@ -25,6 +25,8 @@ public:
 	void chekCollisionRumble(Plants ** &, int);
 	int getSize();
 	Zombie**& getZombiePtr();
+	int getNumZombies();
+	void setCurrent(int);
 };
 #endif // !ZombieFactory_h
 

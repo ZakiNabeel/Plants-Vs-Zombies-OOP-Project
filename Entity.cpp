@@ -8,7 +8,6 @@ void Entity::display(sf::RenderWindow& Window) {
 }
 void Entity::takeDamage() {
 	(this->hitPoints)--;
-	cout << "Entity Hit" << hitPoints << endl;
 }
 bool collisionViaCherryBomb(){ return 1; }
 

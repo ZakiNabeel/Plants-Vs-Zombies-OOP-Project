@@ -16,8 +16,8 @@ void WhitePea::movement() {
 	movementRight();
 	cout << "WhitePea";
 }
-void WhitePea::collisionCheck(Zombie ** & zombieEntities, int size, bool& peaGenerated) {
-	Pea::collisionCheck(zombieEntities, size, peaGenerated);
+void WhitePea::collisionCheck(Zombie ** & zombieEntities, int size, bool& peaGenerated, int& numZom) {
+	Pea::collisionCheck(zombieEntities, size, peaGenerated,numZom);
 }
 void WhitePea::takeDamage() {
 	cout << "WhitePeacsssssssssssss";

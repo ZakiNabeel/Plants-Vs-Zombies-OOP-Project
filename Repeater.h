@@ -12,7 +12,7 @@ public:
 	~Repeater();
 	void takeDamage();
 	void display(sf::RenderWindow & Window);
-	void collisionCheck(Zombie**& zombieEntities, int, Tile ** & grid);
+	void collisionCheck(Zombie**& zombieEntities, int, Tile ** & grid, int& numZom);
 	void magic(int& coins1);
 	void generatePea();
 };

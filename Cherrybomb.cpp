@@ -20,13 +20,12 @@ void Cherrybomb::takeDamage()
 	cout << "     ";
 	this->hitPoints -= 1;
 }
-void Cherrybomb::collisionCheck(Zombie**& zombieEntities, int size, Tile**& grid) {
+void Cherrybomb::collisionCheck(Zombie**& zombieEntities, int size, Tile**& grid, int& numZom) {
 	for (int i = 0; i < size; i++)
 	{
 		if (zombieEntities[i]->position.getX() < position.getX() + 83 && zombieEntities[i]->position.getX() > position.getX() - 83 && zombieEntities[i]->position.getY() == position.getY())
 		{
 			if (spriteEntity.clockEntity.getElapsedTime().asSeconds() >= 2) {
-				cout << "Cherrybomb has collided with zombie" << endl;
 				takeDamage();
 				spriteEntity.clockEntity.restart();
 			}

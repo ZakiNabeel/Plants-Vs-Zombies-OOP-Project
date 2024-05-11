@@ -1,5 +1,6 @@
 #include"Level.h"
-Levels::Levels(int n): zombieFactory(n), plantFactory(n), levelNumber(n){
+Levels::Levels(int n):zombieFactory(n), plantFactory(n), levelNumber(n){
+	numZombies = zombieFactory.getNumZombies();
 	if (levelNumber <= 3) {
 		grid = new Tile * [5];
 		for (int i = 0; i < 5; i++) {
@@ -22,7 +23,7 @@ Levels::Levels(int n): zombieFactory(n), plantFactory(n), levelNumber(n){
 	if(n==1)availablePlants(n);
 	peaPtr = nullptr;
 	sizePea = 0;
-
+	waveNumber = 2;
 }
 Levels::~Levels() {
 	for (int i = 0; i < 5; i++) {
@@ -43,6 +44,17 @@ void Levels::display(sf::RenderWindow &Window) {
 	zombieFactory.display(Window);
 	for (int i = 0; i < 5; i++) {
 		lawnMoverPtr[i]->display(Window);
+	}
+}
+
+void Levels::checkNewWave() {
+	if (numZombies== 0 && waveNumber>0) {
+		numZombies = zombieFactory.getNumZombies();
+		zombieFactory.setCurrent(levelNumber);
+		zombieFactory.addZombies(1200, ((rand() % 5) + 1) * 100, 1, 1, 3, 2);
+	}
+	if (numZombies == 0 && waveNumber == 0) {
+		cout << "Level Completed" << endl;
 	}
 }
 
@@ -81,12 +93,10 @@ bool Levels::checkMouseClick(sf::RenderWindow& Window, int x, int y) {
 	cout << y << endl;
 	if (levelNumber == 1) {
 		if (x >= 0 && x <= 327 && y >= 0 && y <= 100 ) {
-			cout << "PeaShooter---------------------------------------- " << endl;
 			plantFactory.peashooterSelected = 1;
 			return 1;
 		}
 		else if (x >= 0 && x <= 327 && y > 100 && y <= 200) {
-			cout << "Sunflower selected--------------------------------" << endl;
 			plantFactory.sunFlowerSelected = 1;
 			return 1;
 		}
@@ -99,10 +109,10 @@ PlantFactory& Levels::getPlantFactory() {
 }
 
 void Levels::collisionRumble(Tile ** & grid) {
-	plantFactory.chekCollisionRumble(zombieFactory.getZombiePtr(), zombieFactory.getSize(), grid);
+	plantFactory.chekCollisionRumble(zombieFactory.getZombiePtr(), zombieFactory.getSize(), grid, numZombies);
 	zombieFactory.chekCollisionRumble(plantFactory.getPlantPtr(),plantFactory.getSize());
 	for (int i = 0; i < 5; i++) {
-		lawnMoverPtr[i]->collisionCheck(zombieFactory.getZombiePtr(), zombieFactory.getSize());
+		lawnMoverPtr[i]->collisionCheck(zombieFactory.getZombiePtr(), zombieFactory.getSize(), numZombies);
 	}
 }
 

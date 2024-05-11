@@ -11,7 +11,7 @@ public:
 	~Cherrybomb();
 	void display(sf::RenderWindow & Window);
 	void takeDamage();
-	void collisionCheck(Zombie**& zombieEntities, int, Tile**& grid);
+	void collisionCheck(Zombie**& zombieEntities, int, Tile**& grid, int& numZom);
 	void magic(int& coins1);
 };
 #endif

@@ -8,7 +8,7 @@ public:
 	WhitePea(int xPos, int yPos, int h, int w, int hit, int s);
 	~WhitePea();
 	void display(sf::RenderWindow& Window);
-	void collisionCheck(Zombie**& zombieEntities, int, bool& peaGenerated);
+	void collisionCheck(Zombie**& zombieEntities, int, bool& peaGenerated, int& numZom);
 	void movement();
 	void takeDamage();
 	sf::Sprite getSpriteEntity();

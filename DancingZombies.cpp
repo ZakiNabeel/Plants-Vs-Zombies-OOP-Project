@@ -11,8 +11,7 @@ DancingZombies::DancingZombies(int xPos, int yPos, int h, int w, int hit, int s)
 DancingZombies::~DancingZombies() {}
 
 void DancingZombies::movement() {
-    Moving::movementLeft();
-//	cout << "Moved" << endl;
+    Moving::movementDiagonal();
 }
 
 void DancingZombies::takeDamage() {

@@ -18,11 +18,12 @@ void LawnMover::movement() {
 		movementRight();
 	}
 }
-void LawnMover::collisionCheck(Zombie ** & zombieEntities, int size) {
+void LawnMover::collisionCheck(Zombie ** & zombieEntities, int size, int& numZom) {
 	for (int i = 0; i < size; i++) {
 		if ((zombieEntities[i]->position.getX() >= position.getX() && (zombieEntities[i]->position.getX() <= position.getX() + 80)) && (zombieEntities[i]->position.getY() >= position.getY()-20 && zombieEntities[i]->position.getY() >= position.getY() + 20)) {
 			zombieEntities[i]->position.setX(-100);
 			zombieEntities[i]->position.setY(-100);
+			numZom--;
 			startMoving = 1;
 		}
 		if (position.getX() >= 1500) {

@@ -27,7 +27,7 @@ void Sunflower::takeDamage()
 {
 		this->hitPoints--;
 }
-void Sunflower::collisionCheck(Zombie** &zombieEntities, int size, Tile**& grid)
+void Sunflower::collisionCheck(Zombie** &zombieEntities, int size, Tile**& grid, int& numZom)
 {
 	for (int i = 0; i < size; i++)
 	{

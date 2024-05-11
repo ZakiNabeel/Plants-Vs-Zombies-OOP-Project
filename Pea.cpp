@@ -10,8 +10,7 @@ void Pea::movement() {
 	movementRight();
 	cout << "cnuw";
 }
-void Pea::collisionCheck(Zombie**& zombieEntities, int size, bool &peaGenerated) {
-	cout << "--------------------COLLISSION FUNCTOPN CALLED-----------------------" << endl;
+void Pea::collisionCheck(Zombie**& zombieEntities, int size, bool &peaGenerated, int& numZom) {
 	for (int i = 0; i < size; i++)
 	{
 		if ((zombieEntities[i]->position.getX() >= position.getX() && zombieEntities[i]->position.getX() <= position.getX() + 10) && (zombieEntities[i]->position.getY() >= position.getY()-20 && zombieEntities[i]->position.getY() <= position.getY() + 20))
@@ -23,6 +22,7 @@ void Pea::collisionCheck(Zombie**& zombieEntities, int size, bool &peaGenerated)
 			{
 				zombieEntities[i]->position.setX(-100);
 				zombieEntities[i]->position.setY(-100); 
+				--numZom;
 			}
 			//cout << "--------------------COLLISSION DETECTED-----------------------" << endl;
 			//if (spriteEntity.clockEntity.getElapsedTime().asSeconds() >= 2) {

@@ -10,20 +10,16 @@ NormalPea::NormalPea(int xPos=0, int yPos=0, int h=0, int w=0, int hit=0, int s 
 NormalPea::~NormalPea(){}
 void NormalPea::display(sf::RenderWindow & Window){
 	Window.draw(spriteEntity.sprite);
-	cout << "NormalPea Displayed ----------------------------------------Pea wala pulao is v naice " << endl;
 }
-void NormalPea::collisionCheck(Zombie ** & zombieEntities, int size, bool &peaGenerated){
-	Pea::collisionCheck(zombieEntities, size, peaGenerated);
+void NormalPea::collisionCheck(Zombie ** & zombieEntities, int size, bool &peaGenerated, int& numZom){
+	Pea::collisionCheck(zombieEntities, size, peaGenerated,numZom);
 }
 void NormalPea::movement() {
 	movementRight();
-	cout << "PEA MOVING RIGHT ------------->>>>>>";
 }
 void NormalPea::takeDamage() {
-	cout << "NormalPea";
 }
 NormalPea::NormalPea() : Pea(0,0,0,0,0,0){
-	cout << "Default" << endl;
 }
 sf::Sprite NormalPea::getSpriteEntity() {
 	return spriteEntity.sprite;

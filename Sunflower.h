@@ -13,7 +13,7 @@ public:
 	~Sunflower();
 	void display(sf::RenderWindow& Window);
 	void takeDamage();
-	void collisionCheck(Zombie** & zombieEntities, int, Tile**& grid);
+	void collisionCheck(Zombie** & zombieEntities, int, Tile**& grid, int& numZom);
 	void generateSun(int& coins1);
 	void magic(int& coins1);
 };
