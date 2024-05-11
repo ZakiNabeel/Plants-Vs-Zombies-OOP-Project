@@ -35,6 +35,6 @@ void Walknut::collisionCheck(Zombie**&zombieEntities, int size, Tile**& grid)
 	}	
 	cout << "Walknut Collision Check" << endl;
 }
-void Walknut::magic() {
+void Walknut::magic(int& coins1) {
 	cout << "Walknut Rolled" << endl;
 }

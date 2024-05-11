@@ -19,7 +19,7 @@ public:
 	void takeDamage();
 	void collisionCheck(Zombie** &zombieEntities, int, Tile**& grid);
 	virtual void generatePea() = 0;
-	void magic();
+	void magic(int& coins1);
 	void setNumOfPea(int);
 	int getNumOfPea();
 	Pea* getPeaPtr();

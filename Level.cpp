@@ -1,5 +1,5 @@
 #include"Level.h"
-Levels::Levels(int n):numZombies(n*5), zombieFactory(numZombies), plantFactory(n), levelNumber(n){
+Levels::Levels(int n): zombieFactory(n), plantFactory(n), levelNumber(n){
 	if (levelNumber <= 3) {
 		grid = new Tile * [5];
 		for (int i = 0; i < 5; i++) {
@@ -13,13 +13,16 @@ Levels::Levels(int n):numZombies(n*5), zombieFactory(numZombies), plantFactory(n
 			}
 		}
 	}
+	lawnMoverPtr = new LawnMover * [5];
+	for (int i = 0; i < 5; i++) {
+		lawnMoverPtr[i] = new LawnMover(120, 70 + i * 100, 1, 1, 7,7);
+	}
+
 	plantFactory.addGrid(grid);
 	if(n==1)availablePlants(n);
 	peaPtr = nullptr;
 	sizePea = 0;
-}
-void Levels::setNumZombies(int n) {
-	this->numZombies = n * 5;
+
 }
 Levels::~Levels() {
 	for (int i = 0; i < 5; i++) {
@@ -35,16 +38,22 @@ void Levels::display(sf::RenderWindow &Window) {
 	//		grid[i][j].display(Window);
 	//	}
 	//}
-	zombieFactory.display(Window);
 	drawAvailablePlants(levelNumber,Window);
 	plantFactory.display(Window);
+	zombieFactory.display(Window);
+	for (int i = 0; i < 5; i++) {
+		lawnMoverPtr[i]->display(Window);
+	}
 }
 
-void Levels::update() {
+void Levels::update(int& coins1) {
 	zombieFactory.updateZombies();
-	plantFactory.updatePlant();
+	plantFactory.updatePlant(coins1);
 	collisionRumble(grid);
 	plantFactory.checkExistingPlants();
+	for (int i = 0; i < 5; i++) {
+		lawnMoverPtr[i]->movement();
+	}
 }
 void Levels::availablePlants(int level) {
 	if (levelNumber == 1) {
@@ -92,9 +101,12 @@ PlantFactory& Levels::getPlantFactory() {
 void Levels::collisionRumble(Tile ** & grid) {
 	plantFactory.chekCollisionRumble(zombieFactory.getZombiePtr(), zombieFactory.getSize(), grid);
 	zombieFactory.chekCollisionRumble(plantFactory.getPlantPtr(),plantFactory.getSize());
+	for (int i = 0; i < 5; i++) {
+		lawnMoverPtr[i]->collisionCheck(zombieFactory.getZombiePtr(), zombieFactory.getSize());
+	}
 }
 
 
-void Levels::updatePlantFactory(int xPos, int yPos, int h, int w, int hit) {
-	plantFactory.addPlant(xPos,yPos,h,w,hit);
+void Levels::updatePlantFactory(int xPos, int yPos, int h, int w, int hit, int& coins1) {
+	plantFactory.addPlant(xPos,yPos,h,w,hit,coins1);
 }

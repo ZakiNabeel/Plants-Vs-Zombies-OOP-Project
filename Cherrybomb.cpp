@@ -33,6 +33,6 @@ void Cherrybomb::collisionCheck(Zombie**& zombieEntities, int size, Tile**& grid
 		}
 	}
 }
-void Cherrybomb::magic() {
+void Cherrybomb::magic(int& coins1) {
 	cout << "CherryBomb Exploded" << endl;
 }

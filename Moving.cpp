@@ -3,9 +3,6 @@ Moving::Moving(int xPos, int yPos, int h, int w, int hit,int s):Entity(xPos,yPos
 	this->speed = s;
 }
 Moving::~Moving(){}
-void Moving::setSpeed(int s) {
-	this->speed = s;
-}
 int Moving::getSpeed() {
 	return this->speed;
 }

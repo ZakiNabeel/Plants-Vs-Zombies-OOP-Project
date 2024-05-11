@@ -13,7 +13,7 @@ public:
 	void takeDamage();
 	void display(sf::RenderWindow & Window);
 	void collisionCheck(Zombie**& zombieEntities, int, Tile ** & grid);
-	void magic();
+	void magic(int& coins1);
 	void generatePea();
 };
 #endif

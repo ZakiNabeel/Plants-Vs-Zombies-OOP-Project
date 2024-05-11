@@ -1,7 +1,7 @@
 ﻿#include"Game.h"
 #include"Zombie.h"
 //Drawing the background
-Game::Game() :levelNumber(1), level(new BeginersGarden()){
+Game::Game() :levelNumber(1),coins(500), level(new BeginersGarden()){
 	grid.setSize(sf::Vector2f(750, 500));
 	grid.setPosition(250, 80);
 	grid.setFillColor(sf::Color::Transparent);
@@ -20,6 +20,14 @@ void Game::run() {
 //	window.setFramerateLimit(144);
 	sf::Event event;
 	sf::Clock clock;
+	sf::Font fontScore;
+	fontScore.loadFromFile("KnightWarrior-w16n8.otf");
+	sf::Text textScore;
+	textScore.setFont(fontScore);
+	textScore.setCharacterSize(40);
+	textScore.setFillColor(sf::Color::Red);
+	textScore.setPosition(1200, 0);
+	textScore.setString("Coins: " + to_string(coins));
 	while (window.isOpen())
 	{
 		if (levelNumber == 1) {
@@ -35,14 +43,17 @@ void Game::run() {
 			}
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Right) && plantClicked == 1) {
 				cout << "DAN DANA DAN DAN DANA DAN DAN" << endl;
-				level->updatePlantFactory(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y,1,1,1);
+				level->updatePlantFactory(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y,1,1,1,coins);
  				plantClicked = 0;
+				textScore.setString("Coins: " + to_string(coins));
 			}	
 			window.clear();
 			level->createBack(window);
 			window.draw(grid);
-			level->update();
+			level->update(coins);
+			textScore.setString("Coins: " + to_string(coins));
 			level->display(window);
+			window.draw(textScore);
 			window.setSize(sf::Vector2u(1400, 600));
 			window.display();
 		}

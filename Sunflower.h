@@ -3,7 +3,7 @@
 #define Sunflower_H
 #include "Sun.h"
 #include "NonShooter.h"
-class Sunflower : public NonShooter{
+class Sunflower : public NonShooter {
 	Sun* sunPtr;
 	bool sunGenerated;
 public:
@@ -14,7 +14,7 @@ public:
 	void display(sf::RenderWindow& Window);
 	void takeDamage();
 	void collisionCheck(Zombie** & zombieEntities, int, Tile**& grid);
-	void generateSun();
-	void magic();
+	void generateSun(int& coins1);
+	void magic(int& coins1);
 };
 #endif

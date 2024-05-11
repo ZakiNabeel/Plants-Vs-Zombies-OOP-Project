@@ -12,7 +12,7 @@ void NonShooter::collisionCheck(Zombie ** &zombieEntities, int size, Tile**& gri
 	cout << "Coliision checkk non shooter" << endl;
 
 }
-void NonShooter::magic()
+void NonShooter::magic(int& coins1)
 {
 	cout << "nonShooter magic" << endl;
 }

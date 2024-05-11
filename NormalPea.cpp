@@ -12,8 +12,8 @@ void NormalPea::display(sf::RenderWindow & Window){
 	Window.draw(spriteEntity.sprite);
 	cout << "NormalPea Displayed ----------------------------------------Pea wala pulao is v naice " << endl;
 }
-void NormalPea::collisionCheck(Zombie ** & zombieEntities, int size){
-	Pea::collisionCheck(zombieEntities, size);
+void NormalPea::collisionCheck(Zombie ** & zombieEntities, int size, bool &peaGenerated){
+	Pea::collisionCheck(zombieEntities, size, peaGenerated);
 }
 void NormalPea::movement() {
 	movementRight();

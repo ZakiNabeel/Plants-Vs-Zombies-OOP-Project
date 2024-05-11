@@ -1,7 +1,7 @@
 // FootballZombies.cpp
 #include "FootballZombies.h"
 
-FootballZombies::FootballZombies(int xPos, int yPos, int h, int w, int hit, int s) : Zombie(xPos, yPos, h, w, hit, s) {
+FootballZombies::FootballZombies(int xPos, int yPos, int h, int w, int hit, int s) : Zombie(xPos, yPos, h, w, 5, s) {
 	spriteEntity.texture.loadFromFile("FootballZombie_.png");
 	sf::IntRect rectSourceSprite(0, 0, 40, 50);
 	spriteEntity.sprite.setTexture(spriteEntity.texture);

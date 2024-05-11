@@ -28,10 +28,10 @@ public:
   //  Plants* createPlant(const std::string& type, sf::Vector2f pos);
 	PlantFactory(int);
 	~PlantFactory();
-	void addPlant(int, int, int, int, int);
+	void addPlant(int, int, int, int, int, int& coins1);
 	void display(sf::RenderWindow& Window);
 	void addGrid(Tile**&);
-	void updatePlant();
+	void updatePlant(int & coins1);
 	void chekCollisionRumble(Zombie ** & zombieEntities, int size, Tile**& grid);
 	Plants**& getPlantPtr();
 	int getSize();

@@ -7,9 +7,8 @@ public:
 	void createBack(sf::RenderWindow& window);
 	BeginersGarden();
 	~BeginersGarden();
-	void setNumZombies(int n);
 	void display(sf::RenderWindow& Window);
-	void update();
+	void update(int& coins1);
 };
 #endif // !BeginersGarden_h
 

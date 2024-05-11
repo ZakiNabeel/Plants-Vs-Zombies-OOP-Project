@@ -20,6 +20,6 @@ public:
 	void takeDamage();
 	void display(sf::RenderWindow& Window);
 	virtual void collisionCheck(Zombie** &zombieEntities,int,Tile**& grid)=0;
-	virtual void magic() = 0;
+	virtual void magic(int& coins1) = 0;
 };
 #endif

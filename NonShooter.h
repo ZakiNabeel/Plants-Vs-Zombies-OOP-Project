@@ -11,6 +11,6 @@ public:
 	void display(sf::RenderWindow &Window);
 	void collisionCheck(Zombie** & zombieEntities, int,Tile**& grid);
 	void takeDamage();
-	void magic();
+	void magic(int& coins1);
 };
 #endif

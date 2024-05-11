@@ -1,5 +1,5 @@
 #include "Sunflower.h"
-Sunflower::Sunflower(int xPos, int yPos, int h, int w, int hit) : NonShooter(xPos, yPos, h, w, hit){
+Sunflower::Sunflower(int xPos, int yPos, int h, int w, int hit) :NonShooter(xPos, yPos, h, w, hit){
 	sunPtr = nullptr;
 	spriteEntity.texture.loadFromFile("sunFlower (2).png");
 	sf::IntRect rectSourceSprite(341, 117, 113, 117);
@@ -38,22 +38,21 @@ void Sunflower::collisionCheck(Zombie** &zombieEntities, int size, Tile**& grid)
 			//cout << "Sunflower has collided with zombie" << endl;
 			takeDamage();
 			spriteEntity.clockEntity.restart();
+			}
 		}
 	}
 }
-
-}
-void Sunflower::generateSun()
+void Sunflower::generateSun(int& coins1)
 {
+	coins1 += 100;
 	sunPtr = new Sun(position.getX()+83, position.getY(), 1, 1, 0,1);
 	sunGenerated = 1;
 	spriteEntity.clockEntity.restart();
 }
 
-void Sunflower::magic() {
-	cout << "Sunflower : "<<position.getX() << " " << position.getY() << endl;
-	if (sunGenerated == 0 && spriteEntity.clockEntity.getElapsedTime().asSeconds() > 5) {
-		generateSun();
+void Sunflower::magic(int& coins1) {
+	if (sunGenerated == 0 && spriteEntity.clockEntity.getElapsedTime().asSeconds() > 10) {
+		generateSun(coins1);
 		cout << "Sunflower (Post Malone) ny bacha dy dia ---------------------------------------------------------" << endl;
 		spriteEntity.clockEntity.restart();
 	}

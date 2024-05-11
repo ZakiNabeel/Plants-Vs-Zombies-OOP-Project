@@ -35,10 +35,10 @@ void Repeater::collisionCheck(Zombie** &zombieEntities, int size, Tile**& grid)
 	}
 		for (int i = 0; i < numOfPea; i++) {
 			if (peaPtr[i].isPresent == 1)
-			peaPtr[i].collisionCheck(zombieEntities, size);
+			peaPtr[i].collisionCheck(zombieEntities, size,peaGenerated);
 		}
 }
-void Repeater::magic()
+void Repeater::magic(int& coins1)
 {
 	cout << "Repeater has shot lesgooo" << endl;
 	if (peaGenerated == 0) {

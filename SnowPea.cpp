@@ -32,10 +32,10 @@ void SnowPea::collisionCheck(Zombie** &zombieEntities, int size, Tile**& grid) {
 	}
 	for (int i = 0; i < numOfPea; i++) {
 		if(peaPtr[i].isPresent==1)
-		peaPtr[i].collisionCheck(zombieEntities, size);
+		peaPtr[i].collisionCheck(zombieEntities, size,peaGenerated);
 	}
 }
-void SnowPea::magic() {
+void SnowPea::magic(int& coins1) {
 	cout << "Snow Pea Magic" << endl;
 	cout << "Peashooter has shot" << endl;
 	if (peaGenerated == 0)generatePea();

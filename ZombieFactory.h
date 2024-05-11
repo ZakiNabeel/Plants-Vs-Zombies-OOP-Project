@@ -15,6 +15,7 @@ class ZombieFactory {
 	int size;
 	int current;
 	Zombie** zombiePtr;
+	int levelChecker;
 public:
 	ZombieFactory(int);
 	~ZombieFactory();                                              

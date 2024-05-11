@@ -15,7 +15,7 @@ public:
 	void movementLeft();
 	void movementRight();
 	int getSpeed();
-	virtual void setSpeed(int);
+	//virtual void setSpeed(int);
 	//Speed funtions added.
 	//	void movementLeft() and void movementRight() added for Zombies and plants. otehrvisw we would have to make the horizontal function virtual as well
 };

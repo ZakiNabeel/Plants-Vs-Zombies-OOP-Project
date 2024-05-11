@@ -20,35 +20,9 @@ PlantFactory::~PlantFactory() {
 	}
 	delete[] plantPtr;
 }
-void PlantFactory::addPlant(int xPos, int yPos, int h = 1, int w = 1, int hit = 3) {
-
-	//Plants** temp = new Plants * [size + 1];
-	//cout << "Size : " << size << endl;
-	//if (size > 0) {
-	//	for (int i = 0; i < size; i++) {
-	//		temp[i] = plantPtr[i];
-	//		cout << "LOOP 1 --- " << i << endl;
-	//	}
-	//	for (int i = 0; i < size; i++) {
-	//		delete plantPtr[i];
-	//		cout << "LOOP 2 --- " << i << endl;
-	//	}
-	//	delete[] plantPtr;
-	//}
-	//++this->size;
-	//plantPtr = new Plants * [size];
-	//cout << "NEW PLANT FUNCT" << endl;
-	//for (int i = 0; i < size-1; i++) {
-	//	plantPtr[i] = temp[i];
-	//}
-	//if (size > 1) {
-	//	for (int i = 0; i < size; i++) {
-	//		delete temp[i];
-	//	}
-	//}
-	//delete[] temp;
-	//current = size - 1;
-
+void PlantFactory::addPlant(int xPos, int yPos, int h, int w, int hit, int& coins1){
+	cout << "coins===========================" <<coins1 << endl;
+	
 	Plants** temp = new Plants * [size + 1];
 	for (int i = 0; i < size; ++i) {
 		temp[i] = plantPtr[i];
@@ -70,44 +44,50 @@ void PlantFactory::addPlant(int xPos, int yPos, int h = 1, int w = 1, int hit = 
 			for (int j = 0; j < 9; j++) {
 				if (xPos >= grid2[i][j].getX() && xPos <= grid2[i][j].getX() + grid2[i][j].getWidth() && yPos >= grid2[i][j].getY() && yPos <= grid2[i][j].getY() + grid2[i][j].getHeight() && (!grid2[i][j].getSpace())) {
 					grid2[i][j].checkPlant = 1;
-					if (walknutSelected) {
+					if (walknutSelected && coins1>=50) {
 						plantPtr[current] = new Walknut(grid2[i][j].getX(), grid2[i][j].getY(), h, w, hit);
 						current++;
 						walknutSelected = 0;
 						cout << "WalkNut Made" << endl;
+						coins1 -= 50;
 					}
-					else if (peashooterSelected) {
+					else if (peashooterSelected && coins1>=100) {
 						plantPtr[current] = new Peashooter(grid2[i][j].getX(), grid2[i][j].getY(), h, w, hit);
 						current++;
 						peashooterSelected = 0;
 						cout << "PeaShooter made" << endl;
 						numShooterPlants++;
+						coins1 -= 100;
 					}
-					else if (sunFlowerSelected) {
+					else if (sunFlowerSelected && coins1>=100) {
 						plantPtr[current] = new Sunflower(grid2[i][j].getX(), grid2[i][j].getY(), h, w, hit);
 						current++;
 						sunFlowerSelected = 0;
 						cout << "SunFlower Made" << endl;
+						coins1 -= 100;
 					}
-					else if (repeaterSelected) {
+					else if (repeaterSelected && coins1>=200) {
 						plantPtr[current] = new Repeater(grid2[i][j].getX(), grid2[i][j].getY(), h, w, hit);
 						current++;
 						repeaterSelected = 0;
 						cout << "Repeater Made" << endl;
 						numShooterPlants++;
+						coins1 -= 200;
 					}
-					else if (cherrybombSelected) {
+					else if (cherrybombSelected && coins1>=150) {
 						plantPtr[current] = new Cherrybomb(grid2[i][j].getX(), grid2[i][j].getY(), h, w, hit);
 						current++;
 						cherrybombSelected = 0;
 						cout << "CherryBomb Made" << endl;
+						coins1 -= 150;
 					}
-					else if (snowPeaSelected) {
+					else if (snowPeaSelected && coins1>=100) {
 						plantPtr[current] = new SnowPea(grid2[i][j].getX(), grid2[i][j].getY(), h, w, hit);
 						current++;
 						snowPeaSelected = 0;
 						cout << "SnowPea Made" << endl;
 						numShooterPlants++;
+						coins1 -= 100;
 					}
 				}
 			}
@@ -126,12 +106,10 @@ void PlantFactory::addGrid(Tile**& grid) {
 	this->grid2 = grid;
 }
 
-void PlantFactory::updatePlant() {
+void PlantFactory::updatePlant(int& coins1) {
 	for (int i = 0; i < this->current; i++) {
-		cout << "mAgico before" << endl;
-		(*(plantPtr[i])).magic();
-		cout << "mAgico after" << endl;
-	}
+		(*(plantPtr[i])).magic(coins1);
+	} 
 }
 
 void PlantFactory::chekCollisionRumble(Zombie**& zombieEntities, int size, Tile**& grid) {

@@ -16,6 +16,6 @@ void Shooter::takeDamage()
 		this->hitPoints--;
 }
 
-void Shooter::magic() {
+void Shooter::magic(int& coins1) {
 	cout << "Magic shooter" << endl;
 }

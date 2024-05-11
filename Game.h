@@ -8,6 +8,7 @@
 using namespace std;
 
 class Game {
+	int coins;
 	Levels* level;
 	int levelNumber;
 	bool plantClicked;

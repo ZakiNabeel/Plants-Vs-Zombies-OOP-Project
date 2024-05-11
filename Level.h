@@ -7,14 +7,16 @@
 #include"Tile.h"
 #include<iostream>
 #include"PlantFactory.h"
+#include"LawnMover.h"
 using namespace std;
 class PlantFactory;
 class ZombieFactory;
 class Levels {
 protected:	
-	int numZombies;
+	//int numZombies;
 	ZombieFactory zombieFactory;
 	PlantFactory plantFactory;
+	LawnMover** lawnMoverPtr;
 	int levelNumber;
 	Tile** grid;
 	sf::Texture textureBackGround;
@@ -27,16 +29,15 @@ protected:
 public:
 	Levels(int);
 	virtual void createBack(sf::RenderWindow& window) = 0;
-	void setNumZombies(int n);
 	~Levels();
 	void display(sf::RenderWindow & Window);
-	void update();
+	void update(int& coins1);
 	void availablePlants(int);
 	void drawAvailablePlants(int, sf::RenderWindow& Window);
 	bool checkMouseClick(sf::RenderWindow& Window, int, int);
 	PlantFactory& getPlantFactory();
 	void collisionRumble(Tile ** &);
-	void updatePlantFactory(int, int, int, int, int);
+	void updatePlantFactory(int, int, int, int, int, int& coins1);
 	//Tile** getGrid();
 };
 
