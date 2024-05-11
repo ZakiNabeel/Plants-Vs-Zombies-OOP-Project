@@ -2,11 +2,11 @@
 #include "FootballZombies.h"
 
 FootballZombies::FootballZombies(int xPos, int yPos, int h, int w, int hit, int s) : Zombie(xPos, yPos, h, w, 5, s) {
-	spriteEntity.texture.loadFromFile("FootballZombie_.png");
-	sf::IntRect rectSourceSprite(0, 0, 40, 50);
+	spriteEntity.texture.loadFromFile("Football.png");
+	sf::IntRect rectSourceSprite(0, 0, 479, 521);
 	spriteEntity.sprite.setTexture(spriteEntity.texture);
 	spriteEntity.sprite.setTextureRect(rectSourceSprite);
-	spriteEntity.sprite.setScale(2.1f, 2.0f);
+	spriteEntity.sprite.setScale(0.18f, 0.25f);
 }
 
 FootballZombies::~FootballZombies() {}
@@ -22,7 +22,6 @@ void FootballZombies::takeDamage() {
 
 void FootballZombies::display(sf::RenderWindow& Window) {
 	Window.draw(spriteEntity.sprite);
-	//cout << "FootballZombies Displayed" << endl; 
 }
 
 void FootballZombies::collisionCheck(Plants** & plantEntites, int size) {

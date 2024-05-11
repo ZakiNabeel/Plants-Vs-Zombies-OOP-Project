@@ -8,6 +8,7 @@ Game::Game() :levelNumber(1),coins(500), level(new BeginersGarden()){
 	grid.setOutlineColor(sf::Color::Black);
 	grid.setOutlineThickness(2);
 	plantClicked = 0;
+	sunPtr = nullptr;
 }
 Game::~Game() {
 	delete [] level;
@@ -20,6 +21,7 @@ void Game::run() {
 //	window.setFramerateLimit(144);
 	sf::Event event;
 	sf::Clock clock;
+	sf::Clock sunClock;
 	sf::Font fontScore;
 	fontScore.loadFromFile("KnightWarrior-w16n8.otf");
 	sf::Text textScore;
@@ -47,6 +49,15 @@ void Game::run() {
  				plantClicked = 0;
 				textScore.setString("Coins: " + to_string(coins));
 			}	
+			if (sunClock.getElapsedTime().asSeconds() >= 15) {
+				sunGenerated = 1;
+			}
+			if (sunGenerated == 1) {
+				sunPtr = new Sun(((rand()%10)+2)*100, 0, 1, 1, 0, 1);
+				sunGenerated = 0;
+				coins += 100;
+				sunClock.restart();
+			}
 			window.clear();
 			level->createBack(window);
 			window.draw(grid);
@@ -54,6 +65,10 @@ void Game::run() {
 			textScore.setString("Coins: " + to_string(coins));
 			level->display(window);
 			window.draw(textScore);
+			if (sunPtr != nullptr) {
+				sunPtr->movement();
+				sunPtr->display(window);
+			}
 			window.setSize(sf::Vector2u(1400, 600));
 			window.display();
 		}

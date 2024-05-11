@@ -20,7 +20,7 @@ void LawnMover::movement() {
 }
 void LawnMover::collisionCheck(Zombie ** & zombieEntities, int size) {
 	for (int i = 0; i < size; i++) {
-		if ((zombieEntities[i]->position.getX() >= position.getX() && (zombieEntities[i]->position.getX() <= position.getX() + 20)) && (zombieEntities[i]->position.getY() >= position.getY()-20 && zombieEntities[i]->position.getY() >= position.getY() + 20)) {
+		if ((zombieEntities[i]->position.getX() >= position.getX() && (zombieEntities[i]->position.getX() <= position.getX() + 80)) && (zombieEntities[i]->position.getY() >= position.getY()-20 && zombieEntities[i]->position.getY() >= position.getY() + 20)) {
 			zombieEntities[i]->position.setX(-100);
 			zombieEntities[i]->position.setY(-100);
 			startMoving = 1;

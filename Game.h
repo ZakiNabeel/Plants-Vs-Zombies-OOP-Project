@@ -12,6 +12,8 @@ class Game {
 	Levels* level;
 	int levelNumber;
 	bool plantClicked;
+	Sun* sunPtr;
+	bool sunGenerated;
 	sf::RectangleShape grid;
 public:
 	Game();
