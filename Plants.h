@@ -6,7 +6,7 @@
 #include"Tile.h"
 #include <SFML/Graphics.hpp>
 class Zombie;	
-class Plants : public Entity{
+class Plants :public Entity{
 public:
 	bool plantExists;
 	bool typePeaShooter;

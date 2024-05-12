@@ -7,6 +7,10 @@ DolphinRiderZombies::DolphinRiderZombies(int xPos, int yPos, int h, int w, int h
 	spriteEntity.sprite.setTexture(spriteEntity.texture);
 	spriteEntity.sprite.setTextureRect(rectSourceSprite);
 	spriteEntity.sprite.setScale(5.0f, 6.0f);
+	NorthWest = false;
+	SouthWest = false;
+	typeDancer = 0;
+	right = 1;
 }
 
 DolphinRiderZombies::~DolphinRiderZombies() {}

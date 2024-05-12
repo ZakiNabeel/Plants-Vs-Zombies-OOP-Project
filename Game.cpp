@@ -2,15 +2,16 @@
 #include"Zombie.h"
 #include<SFML/Audio.hpp>
 //Drawing the background
-Game::Game() :levelNumber(1),totalLevels(2),coins(500){
+Game::Game() :levelNumber(1),totalLevels(3),coins(500){
 	level = new Levels * [totalLevels];
 	level[0] = new BeginersGarden();
 	level[1] = new ZombieOutskirts();
+	level[2] = new SunflowerFields();
 	plantClicked = 0; 
 	sunPtr = nullptr;
 	this-> newLevelCheck=0; 
 	lives = 1;
-	levelNumber++;
+	levelNumber+=2;
 }
 Game::~Game() {
 	for (int i = 0; i < totalLevels; i++) {
@@ -51,7 +52,6 @@ void Game::run() {
 	music.loadFromFile("Peritune_Crimson_Moon-chosic.com_.mp3"); 
 	while (window.isOpen())
 	{
-		cout << "LEVEL NUMBER ============================ " << levelNumber << endl;
 			while (window.pollEvent(event))
 			{
 				if (event.type == sf::Event::Closed)

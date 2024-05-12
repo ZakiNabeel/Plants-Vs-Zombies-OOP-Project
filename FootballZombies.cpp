@@ -7,6 +7,10 @@ FootballZombies::FootballZombies(int xPos, int yPos, int h, int w, int hit, int 
 	spriteEntity.sprite.setTexture(spriteEntity.texture);
 	spriteEntity.sprite.setTextureRect(rectSourceSprite);
 	spriteEntity.sprite.setScale(0.20f, 0.20f);
+	NorthWest = false;
+	SouthWest = false;
+	typeDancer = 0;
+	right = 1;
 }
 
 FootballZombies::~FootballZombies() {}

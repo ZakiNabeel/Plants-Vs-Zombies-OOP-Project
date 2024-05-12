@@ -39,7 +39,7 @@ void PlantFactory::addPlant(int xPos, int yPos, int h, int w, int hit, int& coin
 	}
 	delete[] temp;
 
-	if (xPos >= 250 && xPos <= 800 && yPos >= 70 && yPos <= 570) {
+	if (xPos >= 250 && xPos <= 900 && yPos >= 70 && yPos <= 570) {
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 9; j++) {
 				if (xPos >= grid2[i][j].getX() && xPos <= grid2[i][j].getX() + grid2[i][j].getWidth() && yPos >= grid2[i][j].getY() && yPos <= grid2[i][j].getY() + grid2[i][j].getHeight() && (!grid2[i][j].getSpace())) {

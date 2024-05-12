@@ -2,11 +2,10 @@
 #ifndef Walknut_H
 #define Walknut_H
 #include "NonShooter.h"
-class Walknut : public NonShooter
-{
-	bool coordinateRightTouch;
-	bool coordinateLeftTouch;
+class Walknut : public NonShooter{
+	bool rotate;
 	sf::IntRect rectSourceSprite;
+	int speed;
 public:
 	bool present;
 

@@ -30,6 +30,16 @@ void Moving::movementDiagonalSouthWest() {
 	position.setX((int)(position.getX() - this->speed));
 	spriteEntity.sprite.setPosition(position.getX(), position.getY());
 }
+void Moving::movementDiagonalNorthEast() {
+	position.setY((int)(position.getY() - this->speed));
+	position.setX((int)(position.getX() + this->speed));
+	spriteEntity.sprite.setPosition(position.getX(), position.getY());
+}
+void Moving::movementDiagonalSouthEast() {
+	position.setY((int)(position.getY() - this->speed));
+	position.setX((int)(position.getX() + this->speed));
+	spriteEntity.sprite.setPosition(position.getX(), position.getY());
+}
 
 void Moving::movementVerticalUp() {
 	position.setY((int)(position.getY() - this->speed));

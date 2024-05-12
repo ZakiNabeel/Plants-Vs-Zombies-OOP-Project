@@ -7,6 +7,10 @@ FlyingZombies::FlyingZombies(int xPos, int yPos, int h, int w, int hit, int s) :
 	spriteEntity.sprite.setTexture(spriteEntity.texture);
 	spriteEntity.sprite.setTextureRect(rectSourceSprite);
 	spriteEntity.sprite.setScale(0.35f, 0.22f);
+	NorthWest = false;
+	SouthWest = false;
+	typeDancer = 0;
+	right = 1;
 }
 
 FlyingZombies::~FlyingZombies() {}

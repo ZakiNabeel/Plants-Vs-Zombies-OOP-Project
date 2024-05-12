@@ -10,6 +10,10 @@ SimpleZombies::SimpleZombies(int xPos, int yPos, int h, int w, int hit, int s) :
 	spriteEntity.sprite.setPosition(xPos, yPos);
 	spriteEntity.sprite.setScale(0.3f, 0.17f);
 	spriteEntity.clockEntity.restart();
+	NorthWest = false;
+	SouthWest = false;
+	typeDancer = 0;
+	right = 1;
 }
 SimpleZombies::~SimpleZombies(){}
 void SimpleZombies::display(sf::RenderWindow & Window) {		

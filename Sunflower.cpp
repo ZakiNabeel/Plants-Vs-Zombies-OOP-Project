@@ -1,5 +1,5 @@
 #include "Sunflower.h"
-Sunflower::Sunflower(int xPos, int yPos, int h, int w, int hit) :NonShooter(xPos, yPos, h, w, hit){
+Sunflower::Sunflower(int xPos, int yPos, int h, int w, int hit) :NonShooter(xPos, yPos, h, w, 50){
 	sunPtr = nullptr;
 	spriteEntity.texture.loadFromFile("sunFlower (2).png");
 	sf::IntRect rectSourceSprite(341, 117, 113, 117);
@@ -31,12 +31,38 @@ void Sunflower::collisionCheck(Zombie** &zombieEntities, int size, Tile**& grid,
 {
 	for (int i = 0; i < size; i++)
 	{
-		if ((zombieEntities[i]->position.getX() >= position.getX() + 50 && zombieEntities[i]->position.getX() <= position.getX() + 80) && (zombieEntities[i]->position.getY() >= position.getY() - 20) && (zombieEntities[i]->position.getY() <= position.getY() + 20)) {
-			if (spriteEntity.clockEntity.getElapsedTime().asSeconds() >= 2)
-			{
-			//cout << "Sunflower has collided with zombie" << endl;
-			takeDamage();
-			spriteEntity.clockEntity.restart();
+		if ((zombieEntities[i]->position.getX() >= position.getX() + 50 && zombieEntities[i]->position.getX() <= position.getX() + 80) && (zombieEntities[i]->position.getY() >= position.getY() - 30) && (zombieEntities[i]->position.getY() <= position.getY() + 30))
+		{
+			for (int i = 0; i < 5; i++) {
+				for (int j = 0; j < 9; j++) {
+					if (grid[i][j].getX() == position.getX() && grid[i][j].getY() == position.getY()) {
+						grid[i][j].checkPlant = 0;
+					}
+				}
+			}
+			if (zombieEntities[i]->typeDancer) {
+				if (zombieEntities[i]->NorthWest) {
+					zombieEntities[i]->movementDiagonalSouthEast();
+				}
+				else {
+					zombieEntities[i]->movementDiagonalNorthEast();
+				}
+			}
+			else {
+				zombieEntities[i]->movementRight();
+			}			hitPoints--;
+			if (hitPoints == 0) {
+				plantExists = 0;
+				present = 0;
+				position.setX(-100);
+				position.setY(-100);
+				takeDamage();
+				if (healthCheck())
+				{
+					plantExists = 0;
+					present = 0;
+				}
+				spriteEntity.clockEntity.restart();
 			}
 		}
 	}

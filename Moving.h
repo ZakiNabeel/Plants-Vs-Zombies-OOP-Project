@@ -2,7 +2,7 @@
 #ifndef Movement_h
 #define Movement_h
 #include"Entity.h"
-class Moving:public Entity {
+class Moving : public Entity{
 protected:
 	int speed;
 public:
@@ -13,6 +13,8 @@ public:
 	void movementVertical();
 	void movementDiagonalNorthWest();
 	void movementDiagonalSouthWest();
+	void movementDiagonalNorthEast();
+	void movementDiagonalSouthEast();
 	void movementLeft();
 	void movementRight();
 	int getSpeed();

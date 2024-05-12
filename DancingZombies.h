@@ -13,6 +13,8 @@ public:
     void takeDamage();
     void display(sf::RenderWindow& Window);
     void collisionCheck( Plants**& plantEntites, int size);
+    bool getNorthWest();
+    bool getSouthWest();
 };
 
 #endif // !DancingZombies_h

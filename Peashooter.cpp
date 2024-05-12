@@ -36,7 +36,7 @@ void Peashooter::collisionCheck( Zombie** &zombieEntities, int size, Tile**& gri
 {
 	for (int i = 0; i < size; i++)
 	{
-		if ((zombieEntities[i]->position.getX() >= position.getX()+50 && zombieEntities[i]->position.getX() <= position.getX() + 80) && (zombieEntities[i]->position.getY() >= position.getY() - 20) && (zombieEntities[i]->position.getY() <= position.getY() + 20))
+		if ((zombieEntities[i]->position.getX() >= position.getX()+50 && zombieEntities[i]->position.getX() <= position.getX() + 80) && (zombieEntities[i]->position.getY() >= position.getY() - 30) && (zombieEntities[i]->position.getY() <= position.getY() + 30))
 		{
 			for (int i = 0; i < 5; i++) {
 				for (int j = 0; j < 9; j++) {
@@ -44,8 +44,18 @@ void Peashooter::collisionCheck( Zombie** &zombieEntities, int size, Tile**& gri
 						grid[i][j].checkPlant=0;
 					}
 				}
-			}	
-			zombieEntities[i]->movementRight();
+			}
+			if (zombieEntities[i]->typeDancer) {
+				if (zombieEntities[i]->NorthWest) {
+					zombieEntities[i]->movementDiagonalSouthEast();
+				}
+				else {
+					zombieEntities[i]->movementDiagonalNorthEast();
+				}
+			}
+			else {
+				zombieEntities[i]->movementRight();
+			}			
 			hitPoints--;
 			if (hitPoints==0) {
 				plantExists = 0;

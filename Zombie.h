@@ -8,6 +8,10 @@ using namespace std;
 class Plants;
 class Zombie :public Moving {
 public:
+	bool typeDancer;
+	bool NorthWest;
+	bool SouthWest;
+	bool right;
 	Zombie(int xPos, int yPos, int h, int w, int hit, int s);
 	~Zombie();
 	void movement();

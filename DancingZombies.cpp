@@ -10,6 +10,8 @@ DancingZombies::DancingZombies(int xPos, int yPos, int h, int w, int hit, int s)
 	spriteEntity.sprite.setScale(0.2f, 0.2f);
 	NorthWest = true;
 	SouthWest = false;
+	typeDancer = 1;
+	right = 0;
 }
 
 DancingZombies::~DancingZombies() {}
@@ -21,8 +23,8 @@ void DancingZombies::movement() {
 		SouthWest = true;
 		Moving::movementDiagonalSouthWest();
 	}
-	else if (position.getY() < 570 && SouthWest == true) Moving::movementDiagonalSouthWest();
-	else if (position.getY() >= 570 && SouthWest == true) {
+	else if (position.getY() < 450 && SouthWest == true) Moving::movementDiagonalSouthWest();
+	else if (position.getY() >= 450 && SouthWest == true) {
 		NorthWest = true;
 		SouthWest = false;
 		Moving::movementDiagonalNorthWest();
@@ -40,4 +42,11 @@ void DancingZombies::display(sf::RenderWindow & Window) {
 
 void DancingZombies::collisionCheck(Plants** & plantEntites, int size) {
 	cout << "Collision Check Dancing Zombie" << endl;
+}
+
+bool DancingZombies::getNorthWest() {
+	return NorthWest;
+}
+bool  DancingZombies::getSouthWest() {
+	return SouthWest;
 }
