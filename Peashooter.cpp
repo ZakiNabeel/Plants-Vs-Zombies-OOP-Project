@@ -36,7 +36,7 @@ void Peashooter::collisionCheck( Zombie** &zombieEntities, int size, Tile**& gri
 {
 	for (int i = 0; i < size; i++)
 	{
-		if ((zombieEntities[i]->position.getX() >= position.getX() && zombieEntities[i]->position.getX() <= position.getX() + 10) && (zombieEntities[i]->position.getY() >= position.getY()-20)&&(zombieEntities[i]->position.getY() <= position.getY() + 20))
+		if ((zombieEntities[i]->position.getX() >= position.getX()+50 && zombieEntities[i]->position.getX() <= position.getX() + 80) && (zombieEntities[i]->position.getY() >= position.getY() - 20) && (zombieEntities[i]->position.getY() <= position.getY() + 20))
 		{
 			for (int i = 0; i < 5; i++) {
 				for (int j = 0; j < 9; j++) {
@@ -87,9 +87,7 @@ void Peashooter::magic(int& coins1)
         // Reset the clock
         spriteEntity.clockEntity.restart();
     }
-
     if (peaGenerated == 1) {
-        // Move the generated pea
         peaPtr->movement();
     }
 }

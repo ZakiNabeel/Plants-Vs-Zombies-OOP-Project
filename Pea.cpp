@@ -1,5 +1,5 @@
 #include"Pea.h"
-Pea::Pea(int xPos, int yPos, int h, int w, int hit, int s = 1) : Moving(xPos, yPos, h, w, hit, s) {
+Pea::Pea(int xPos, int yPos, int h, int w, int hit, int s = 1) : Moving(xPos, yPos, h, w, hit, 5) {
 	this->isPresent = 0;
 }
 Pea::~Pea(){}
@@ -13,7 +13,11 @@ void Pea::movement() {
 void Pea::collisionCheck(Zombie**& zombieEntities, int size, bool &peaGenerated, int& numZom) {
 	for (int i = 0; i < size; i++)
 	{
-		if ((zombieEntities[i]->position.getX() >= position.getX() && zombieEntities[i]->position.getX() <= position.getX() + 10) && (zombieEntities[i]->position.getY() >= position.getY()-20 && zombieEntities[i]->position.getY() <= position.getY() + 20))
+		if (position.getX() > 1400) {
+			isPresent = 0;
+			peaGenerated = 0;
+		}
+		else if((zombieEntities[i]->position.getX() >= position.getX() && zombieEntities[i]->position.getX() <= position.getX() + 10) && (zombieEntities[i]->position.getY() >= position.getY()-20 && zombieEntities[i]->position.getY() <= position.getY() + 20))
 		{
 			position.setX(-100);
 			position.setY(-100);
@@ -23,15 +27,7 @@ void Pea::collisionCheck(Zombie**& zombieEntities, int size, bool &peaGenerated,
 				zombieEntities[i]->position.setX(-100);
 				zombieEntities[i]->position.setY(-100); 
 				--numZom;
-			}
-			//cout << "--------------------COLLISSION DETECTED-----------------------" << endl;
-			//if (spriteEntity.clockEntity.getElapsedTime().asSeconds() >= 2) {
-			//	cout << "Peashooter has collided with zombie" << endl;
-			//	position.setX(-100);
-			//	position.setY(-100);
-			//	takeDamage();
-			//	spriteEntity.clockEntity.restart();
-			//}
+			}			
 			isPresent = 0;
 			peaGenerated = 0;
 		}

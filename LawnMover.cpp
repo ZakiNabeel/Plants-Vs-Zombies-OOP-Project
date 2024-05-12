@@ -1,5 +1,5 @@
 #include"LawnMover.h"
-LawnMover::LawnMover(int xPos, int yPos, int h, int w, int hit, int s = 1) : Moving(xPos, yPos, h, w, hit, s) {
+LawnMover::LawnMover(int xPos, int yPos, int h, int w, int hit, int s = 1) : Moving(xPos, yPos, h, w, hit, 10) {
 	isPresent = 1;
 	startMoving = 0;
 }
@@ -20,7 +20,7 @@ void LawnMover::movement() {
 }
 void LawnMover::collisionCheck(Zombie ** & zombieEntities, int size, int& numZom) {
 	for (int i = 0; i < size; i++) {
-		if ((zombieEntities[i]->position.getX() >= position.getX() && (zombieEntities[i]->position.getX() <= position.getX() + 80)) && (zombieEntities[i]->position.getY() >= position.getY()-20 && zombieEntities[i]->position.getY() >= position.getY() + 20)) {
+		if ((((zombieEntities[i]->position.getX() <= position.getX() + 80))) && (zombieEntities[i]->position.getY() <= position.getY()+20 && zombieEntities[i]->position.getY() >= position.getY() - 20)) {
 			zombieEntities[i]->position.setX(-100);
 			zombieEntities[i]->position.setY(-100);
 			numZom--;

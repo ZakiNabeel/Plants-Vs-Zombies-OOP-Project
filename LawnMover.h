@@ -6,8 +6,8 @@
 #include"Zombie.h"
 using namespace std;
 class LawnMover :public Moving {
-	bool startMoving;
 public:
+	bool startMoving;
 	bool isPresent;
 	LawnMover(int xPos, int yPos, int h, int w, int hit, int s);
 	~LawnMover();

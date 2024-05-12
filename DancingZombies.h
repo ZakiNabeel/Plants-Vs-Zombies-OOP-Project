@@ -4,6 +4,8 @@
 #include "Zombie.h"
 
 class DancingZombies : public Zombie {
+    bool NorthWest;
+	bool SouthWest;
 public:
     DancingZombies(int xPos, int yPos, int h, int w, int hit, int s);
     ~DancingZombies();

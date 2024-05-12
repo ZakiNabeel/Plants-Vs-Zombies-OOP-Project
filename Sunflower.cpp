@@ -14,13 +14,13 @@ Sunflower::Sunflower(int xPos, int yPos, int h, int w, int hit) :NonShooter(xPos
 }
 Sunflower::~Sunflower() {
 	delete[] sunPtr;
+	sunPtr = nullptr;
 }
 void Sunflower::display(sf::RenderWindow & Window) {
 	Window.draw(spriteEntity.sprite);
 	//cout << "SunFlower displayed, now get some sunlight" << endl;
 	if (sunGenerated == 1 && sunPtr!=nullptr) {
 		sunPtr[0].display(Window);
-		cout << "SUN SUN SUN SUN SUN SUN SUN SUN SUN SUN SUN SUN SUN SUN SUN SUN" << endl;
 	}
 }
 void Sunflower::takeDamage()
@@ -31,8 +31,7 @@ void Sunflower::collisionCheck(Zombie** &zombieEntities, int size, Tile**& grid,
 {
 	for (int i = 0; i < size; i++)
 	{
-		if (zombieEntities[i]->position.getX() < position.getX() + 83 && zombieEntities[i]->position.getX() > position.getX() - 83 && zombieEntities[i]->position.getY() == position.getY())
-		{
+		if ((zombieEntities[i]->position.getX() >= position.getX() + 50 && zombieEntities[i]->position.getX() <= position.getX() + 80) && (zombieEntities[i]->position.getY() >= position.getY() - 20) && (zombieEntities[i]->position.getY() <= position.getY() + 20)) {
 			if (spriteEntity.clockEntity.getElapsedTime().asSeconds() >= 2)
 			{
 			//cout << "Sunflower has collided with zombie" << endl;
@@ -53,7 +52,6 @@ void Sunflower::generateSun(int& coins1)
 void Sunflower::magic(int& coins1) {
 	if (sunGenerated == 0 && spriteEntity.clockEntity.getElapsedTime().asSeconds() > 10) {
 		generateSun(coins1);
-		cout << "Sunflower (Post Malone) ny bacha dy dia ---------------------------------------------------------" << endl;
 		spriteEntity.clockEntity.restart();
 	}
 	else {
@@ -63,7 +61,6 @@ void Sunflower::magic(int& coins1) {
 			delete sunPtr;
 			sunPtr = nullptr;
 			sunGenerated = 0;
-			cout << "Sun deleted ---------------------------------------------------------" << endl;
 			spriteEntity.clockEntity.restart();
 		}
 	}

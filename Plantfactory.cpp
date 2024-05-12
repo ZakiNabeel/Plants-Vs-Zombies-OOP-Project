@@ -19,6 +19,7 @@ PlantFactory::~PlantFactory() {
 		delete plantPtr[i];
 	}
 	delete[] plantPtr;
+	plantPtr = nullptr;
 }
 void PlantFactory::addPlant(int xPos, int yPos, int h, int w, int hit, int& coins1){
 	

@@ -8,7 +8,7 @@ SimpleZombies::SimpleZombies(int xPos, int yPos, int h, int w, int hit, int s) :
 	rectSourceSprite.height = 600;
 	spriteEntity.sprite.setTextureRect(rectSourceSprite);
 	spriteEntity.sprite.setPosition(xPos, yPos);
-	spriteEntity.sprite.setScale(0.15f, 0.27f);
+	spriteEntity.sprite.setScale(0.3f, 0.17f);
 	spriteEntity.clockEntity.restart();
 }
 SimpleZombies::~SimpleZombies(){}

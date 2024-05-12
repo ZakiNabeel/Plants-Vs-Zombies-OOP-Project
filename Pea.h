@@ -9,7 +9,7 @@ class Pea : public Moving {
 public:	
 	bool isPresent;
 	Pea(int xPos, int yPos, int h, int w, int hit, int s);
-	~Pea();
+	virtual ~Pea();
 	void display(sf::RenderWindow& Window);
 	void movement();
 	void collisionCheck(Zombie**& zombieEntities, int, bool &, int& numZom);

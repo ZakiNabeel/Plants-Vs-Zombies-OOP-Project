@@ -6,7 +6,7 @@ FootballZombies::FootballZombies(int xPos, int yPos, int h, int w, int hit, int 
 	sf::IntRect rectSourceSprite(0, 0, 479, 521);
 	spriteEntity.sprite.setTexture(spriteEntity.texture);
 	spriteEntity.sprite.setTextureRect(rectSourceSprite);
-	spriteEntity.sprite.setScale(0.18f, 0.25f);
+	spriteEntity.sprite.setScale(0.20f, 0.20f);
 }
 
 FootballZombies::~FootballZombies() {}

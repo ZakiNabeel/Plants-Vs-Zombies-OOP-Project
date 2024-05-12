@@ -7,7 +7,9 @@ WhitePea::WhitePea(int xPos, int yPos, int h, int w, int hit, int s = 1) : Pea(x
 	spriteEntity.sprite.setScale(0.9f, 0.9f);
 	spriteEntity.sprite.setPosition(xPos, yPos);
 }
-WhitePea::~WhitePea(){}
+WhitePea::~WhitePea(){
+
+}
 void WhitePea::display(sf::RenderWindow& Window){
 	cout << "eieuif";
 	Window.draw(spriteEntity.sprite);

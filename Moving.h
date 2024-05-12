@@ -11,10 +11,12 @@ public:
 	virtual void movement()=0;
 	//void movementHorizontal();
 	void movementVertical();
-	void movementDiagonal();
+	void movementDiagonalNorthWest();
+	void movementDiagonalSouthWest();
 	void movementLeft();
 	void movementRight();
 	int getSpeed();
+	void movementVerticalUp();
 	//virtual void setSpeed(int);
 	//Speed funtions added.
 	//	void movementLeft() and void movementRight() added for Zombies and plants. otehrvisw we would have to make the horizontal function virtual as well

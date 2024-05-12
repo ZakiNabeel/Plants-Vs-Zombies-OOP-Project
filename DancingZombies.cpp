@@ -2,16 +2,31 @@
 #include "DancingZombies.h"
 
 DancingZombies::DancingZombies(int xPos, int yPos, int h, int w, int hit, int s) : Zombie(xPos, yPos, h, w, hit, s) {
-	spriteEntity.texture.loadFromFile("Zombies/DancingZombie1.png");
-	sf::IntRect rectSourceSprite(0, 0, 50, 50);
+	spriteEntity.texture.loadFromFile("dancer-removebg-preview.png");
+	sf::IntRect rectSourceSprite(0, 0, 478, 522);
 	spriteEntity.sprite.setTexture(spriteEntity.texture);
 	spriteEntity.sprite.setPosition(xPos, yPos);
+	spriteEntity.sprite.setTextureRect(rectSourceSprite);
+	spriteEntity.sprite.setScale(0.2f, 0.2f);
+	NorthWest = true;
+	SouthWest = false;
 }
 
 DancingZombies::~DancingZombies() {}
 
 void DancingZombies::movement() {
-    Moving::movementDiagonal();
+	if (position.getY() > 70 && NorthWest == true)Moving::movementDiagonalNorthWest();
+	else if (position.getY() <= 70 && NorthWest == true) {
+		NorthWest = false;
+		SouthWest = true;
+		Moving::movementDiagonalSouthWest();
+	}
+	else if (position.getY() < 570 && SouthWest == true) Moving::movementDiagonalSouthWest();
+	else if (position.getY() >= 570 && SouthWest == true) {
+		NorthWest = true;
+		SouthWest = false;
+		Moving::movementDiagonalNorthWest();
+	}
 }
 
 void DancingZombies::takeDamage() {

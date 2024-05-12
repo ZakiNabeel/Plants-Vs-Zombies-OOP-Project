@@ -23,6 +23,10 @@ protected:
 	sf::Sprite spriteBackGround;
 	sf::Texture textureAvailablePlants;
 	sf::Sprite spriteAvailablePlants;
+	sf::Texture textureAvailablePlantsL2;
+	sf::Sprite spriteAvailablePlantsL2;
+	sf::Texture textureAvailablePlantsL3;
+	sf::Sprite spriteAvailablePlantsL3;
 	//Sun** sunPtr;
 	Pea* peaPtr;
 	int sizePea;
@@ -32,15 +36,17 @@ public:
 	Levels(int);
 	virtual void createBack(sf::RenderWindow& window) = 0;
 	~Levels();
-	void checkNewWave();
+	ZombieFactory& getZombieFactory();
+	PlantFactory& getPlantFactory();
+	bool checkNewWave(int level);
 	void display(sf::RenderWindow & Window);
 	void update(int& coins1);
-	void availablePlants(int);
+	void availablePlants();
 	void drawAvailablePlants(int, sf::RenderWindow& Window);
 	bool checkMouseClick(sf::RenderWindow& Window, int, int);
-	PlantFactory& getPlantFactory();
 	void collisionRumble(Tile ** &);
 	void updatePlantFactory(int, int, int, int, int, int& coins1);
+	bool checkZombieWin(Zombie**& zombieEntities, int size, int & live);
 	//Tile** getGrid();
 };
 

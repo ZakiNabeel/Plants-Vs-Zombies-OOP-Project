@@ -2,11 +2,11 @@
 #include "FlyingZombies.h"
 
 FlyingZombies::FlyingZombies(int xPos, int yPos, int h, int w, int hit, int s) : Zombie(xPos, yPos, h, w, hit, s) {
-	spriteEntity.texture.loadFromFile("BaloonZombie_.png");
-	sf::IntRect rectSourceSprite(0, 0, 35, 57);
+	spriteEntity.texture.loadFromFile("flyingZombie-removebg-preview.png");
+	sf::IntRect rectSourceSprite(0, 0, 275, 496);
 	spriteEntity.sprite.setTexture(spriteEntity.texture);
 	spriteEntity.sprite.setTextureRect(rectSourceSprite);
-	spriteEntity.sprite.setScale(2.2f, 1.9f);
+	spriteEntity.sprite.setScale(0.35f, 0.22f);
 }
 
 FlyingZombies::~FlyingZombies() {}

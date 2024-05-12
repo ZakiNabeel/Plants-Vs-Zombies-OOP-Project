@@ -46,7 +46,9 @@ void Tile::setGridPosition(int x, int y) {
 	rectangleTile.setOutlineColor(sf::Color::Black);
 	rectangleTile.setOutlineThickness(2);
 }
-Tile::~Tile() {}
+Tile::~Tile() {
+	
+}
 void Tile::display(sf::RenderWindow & Window) {
 	Window.draw(rectangleTile);
 }

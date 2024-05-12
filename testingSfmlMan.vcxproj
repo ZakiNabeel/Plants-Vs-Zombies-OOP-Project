@@ -51,6 +51,7 @@
     <ClInclude Include="WhitePea.h" />
     <ClInclude Include="Zombie.h" />
     <ClInclude Include="ZombieFactory.h" />
+    <ClInclude Include="ZombieOutskirts.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BeginersGarden.cpp" />
@@ -76,6 +77,7 @@
     <ClCompile Include="SimpleZombies.cpp" />
     <ClCompile Include="SnowPea.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="ZombieOutskirts.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Sun.cpp" />
     <ClCompile Include="Size.cpp" />

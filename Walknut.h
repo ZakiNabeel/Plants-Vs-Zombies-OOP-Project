@@ -4,6 +4,9 @@
 #include "NonShooter.h"
 class Walknut : public NonShooter
 {
+	bool coordinateRightTouch;
+	bool coordinateLeftTouch;
+	sf::IntRect rectSourceSprite;
 public:
 	bool present;
 

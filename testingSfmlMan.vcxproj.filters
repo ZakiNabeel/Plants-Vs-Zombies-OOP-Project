@@ -111,6 +111,9 @@
     <ClInclude Include="SnowPea.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ZombieOutskirts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Position.cpp">
@@ -207,6 +210,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SnowPea.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ZombieOutskirts.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
