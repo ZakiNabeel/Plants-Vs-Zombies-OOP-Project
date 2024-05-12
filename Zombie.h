@@ -1,6 +1,6 @@
 #pragma once
 #ifndef Zombie_h
-#define Zombies_h
+#define Zombie_h
 #include"iostream"
 #include"Moving.h"
 #include"Plants.h"

@@ -29,7 +29,7 @@ void Peashooter::display(sf::RenderWindow & Window) {
 	Window.draw(spriteEntity.sprite);
 	for (int i = 0; i < numOfPea; i++) {
 		if (peaPtr != nullptr && peaGenerated==1)
-		peaPtr[i].display(Window);
+		peaPtr[i]->display(Window);
 	}
 }
 void Peashooter::collisionCheck( Zombie** &zombieEntities, int size, Tile**& grid, int& numZom)
@@ -74,19 +74,10 @@ void Peashooter::collisionCheck( Zombie** &zombieEntities, int size, Tile**& gri
 	}
 	if (peaGenerated == 1) {
 		for (int i = 0; i < numOfPea; i++) {
-			peaPtr[i].collisionCheck(zombieEntities, size, peaGenerated,numZom);
+			peaPtr[i]->collisionCheck(zombieEntities, size, peaGenerated,numZom);
 		}
 	}
 }
-//void Peashooter::magic(int& coins1)
-//{
-	//cout << "PeaShooter : " << position.getX() << " " << position.getY() << endl;
-	//cout << "Peashooter has shot" << endl;
-	//if(peaGenerated==0 && spriteEntity.clockEntity.getElapsedTime().asSeconds()>=10) generatePea();
-	//if (peaGenerated == 1) {
-	//	peaPtr->movement();
-	//}
-//}
 void Peashooter::magic(int& coins1)
 {
     // Check if 10 seconds have elapsed since the last pea was generated
@@ -98,16 +89,19 @@ void Peashooter::magic(int& coins1)
         spriteEntity.clockEntity.restart();
     }
     if (peaGenerated == 1) {
-        peaPtr->movement();
+		for (int i = 0; i < numOfPea; i++) {
+			peaPtr[i]->movement();
+		}
     }
 }
 
 void Peashooter::generatePea()
 {
 	cout << "Pea generated Pea Shooter" << endl;
-	peaPtr = new NormalPea(position.getX()+83, position.getY(), 1, 1, 0, 3);
+	peaPtr = new Pea * [1];
+	peaPtr[0] = new NormalPea(position.getX() + 83, position.getY(), 1, 1, 0, 3);
 	peaGenerated = 1;
 	for (int i = 0; i < numOfPea; i++) {
-		peaPtr[i].isPresent = 1;
+		peaPtr[i]->isPresent = 1;
 	}
 }

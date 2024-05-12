@@ -1,4 +1,5 @@
 #include"Tile.h"
+#include"Zombie.h"
 using namespace sf;
 Tile::Tile() {
 	xPos = 0;
@@ -51,8 +52,4 @@ Tile::~Tile() {
 }
 void Tile::display(sf::RenderWindow & Window) {
 	Window.draw(rectangleTile);
-}
-bool Tile::collisionCheck()
-{
-	return 1;
 }

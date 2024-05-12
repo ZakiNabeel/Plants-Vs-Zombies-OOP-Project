@@ -7,7 +7,7 @@
 class Shooter : public Plants
 {
 protected:	
-	Pea* peaPtr;
+	Pea** peaPtr;
 	int numOfPea;
 public:
 	bool peaGenerated;
@@ -22,6 +22,6 @@ public:
 	void magic(int& coins1);
 	void setNumOfPea(int);
 	int getNumOfPea();
-	Pea* getPeaPtr();
+	Pea** getPeaPtr();
 };
 #endif

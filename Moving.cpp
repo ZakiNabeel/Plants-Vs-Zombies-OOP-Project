@@ -45,3 +45,8 @@ void Moving::movementVerticalUp() {
 	position.setY((int)(position.getY() - this->speed));
 	spriteEntity.sprite.setPosition(position.getX(), position.getY());
 }
+
+void Moving::setSpeed(int s) {
+	speed = s;
+}
+

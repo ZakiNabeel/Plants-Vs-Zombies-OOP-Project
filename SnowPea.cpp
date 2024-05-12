@@ -1,54 +1,108 @@
-#include"SnowPea.h"
-SnowPea::SnowPea(int xPos, int yPos, int h, int w, int hp):Shooter(xPos,yPos,h,w,hp){
-	cout << "SnowPea Constructor" << endl;
-	spriteEntity.texture.loadFromFile("SnowPea.png");
-	sf::IntRect rectSourceSprite(0, 0, 30, 32);
-	spriteEntity.sprite.setTexture(spriteEntity.texture);
-	spriteEntity.sprite.setTextureRect(rectSourceSprite);
-	spriteEntity.sprite.setScale(2.0f, 2.0f);
-	spriteEntity.sprite.setPosition(xPos, yPos);
-	present = 1;
-	Plants::typeSnowPea = 1;
+#include "SnowPea.h"
+#include "SFML/Graphics.hpp"
+
+SnowPea::SnowPea(int xPos, int yPos, int h, int w, int hit) : Shooter(xPos, yPos, h, w, 100) {
+    spriteEntity.texture.loadFromFile("snowPeawebbb-removebg-preview.png");
+    sf::IntRect rectSourceSprite(0, 0, 547, 456); 
+    spriteEntity.sprite.setTexture(spriteEntity.texture);
+    spriteEntity.sprite.setTextureRect(rectSourceSprite);
+    spriteEntity.sprite.setScale(0.23f, 0.25f);
+    spriteEntity.sprite.setPosition(xPos, yPos);
+    peaGenerated = 0;
+    Shooter::numOfPea = 1;
+    present = 1;
+    Plants::typeSnowPea = 1; // Update to SnowPea type
+    spriteEntity.clockEntity.restart();
 }
-SnowPea::~SnowPea(){}
-void SnowPea::display(sf::RenderWindow& Window) {
-	Window.draw(spriteEntity.sprite);
-}
+
+SnowPea::~SnowPea() {}
+
 void SnowPea::takeDamage() {
-	cout << "Take Damage SnowPea" << endl;
-	
+    cout << "     ";
+    this->hitPoints--;
 }
-void SnowPea::collisionCheck(Zombie** &zombieEntities, int size, Tile**& grid, int& numZom) {
-	cout << "SnowPea Collision Check" << endl;
-	for (int i = 0; i < size; i++) {
-		if (zombieEntities[i]->position.getX() < position.getX() + 83 && zombieEntities[i]->position.getX() > position.getX() - 83 && zombieEntities[i]->position.getY() == position.getY())
-		{
-			if (spriteEntity.clockEntity.getElapsedTime().asSeconds() >= 2) {
-				cout << "SnowPea has collided with zombie" << endl;
-				takeDamage();
-				spriteEntity.clockEntity.restart();
-			}
-		}
-	}
-	for (int i = 0; i < numOfPea; i++) {
-		if(peaPtr[i].isPresent==1)
-		peaPtr[i].collisionCheck(zombieEntities, size,peaGenerated,numZom);
-	}
+
+bool SnowPea::isPresent() {
+    return this->present;
 }
+
+void SnowPea::display(sf::RenderWindow& Window) {
+    if (isPresent())
+        Window.draw(spriteEntity.sprite);
+    for (int i = 0; i < numOfPea; i++) {
+        if (peaPtr != nullptr && peaGenerated == 1)
+            peaPtr[i]->display(Window);
+    }
+}
+
+void SnowPea::collisionCheck(Zombie**& zombieEntities, int size, Tile**& grid, int& numZom) {
+    for (int i = 0; i < size; i++) {
+        if ((zombieEntities[i]->position.getX() >= position.getX() + 50 && zombieEntities[i]->position.getX() <= position.getX() + 80) &&
+            (zombieEntities[i]->position.getY() >= position.getY() - 30) &&
+            (zombieEntities[i]->position.getY() <= position.getY() + 30)) {
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 9; j++) {
+                    if (grid[i][j].getX() == position.getX() && grid[i][j].getY() == position.getY()) {
+                        grid[i][j].checkPlant = 0;
+                    }
+                }
+            }
+            if (zombieEntities[i]->typeDancer) {
+                if (zombieEntities[i]->NorthWest) {
+                    zombieEntities[i]->movementDiagonalSouthEast();
+                }
+                else {
+                    zombieEntities[i]->movementDiagonalNorthEast();
+                }
+            }
+            else {
+                zombieEntities[i]->movementRight();
+            }
+            hitPoints--;
+            if (hitPoints == 0) {
+                plantExists = 0;
+                present = 0;
+                position.setX(-100);
+                position.setY(-100);
+                takeDamage();
+                if (healthCheck()) {
+                    plantExists = 0;
+                    present = 0;
+                }
+                spriteEntity.clockEntity.restart();
+            }
+        }
+    }
+    if (peaGenerated == 1) {
+        for (int i = 0; i < numOfPea; i++) {
+            cout << "\n\n\n\n\n\n\White PEA WHERE ARE yOU????" << endl;
+            peaPtr[i]->collisionCheck(zombieEntities, size, peaGenerated, numZom);
+        }
+    }
+}
+
 void SnowPea::magic(int& coins1) {
-	cout << "Snow Pea Magic" << endl;
-	cout << "Peashooter has shot" << endl;
-	if (peaGenerated == 0)generatePea();
-	if (peaGenerated == 1) {
-		peaPtr->movement();
-	}
+    // Check if 10 seconds have elapsed since the last pea was generated
+    if (peaGenerated == 0 && spriteEntity.clockEntity.getElapsedTime().asSeconds() >= 10) {
+        // Generate a new pea
+        generatePea();
+
+        // Reset the clock
+        spriteEntity.clockEntity.restart();
+    }
+    if (peaGenerated == 1) {
+        for (int i = 0; i < numOfPea; i++) {
+            peaPtr[i]->movement();
+        }
+    }
 }
 
 void SnowPea::generatePea() {
-	cout << "Snow Pea generating Pea" << endl;
-	if (peaGenerated == 0) {
-		peaPtr = new WhitePea(position.getX(), position.getY(), 1, 1, 0, 1);
-		peaGenerated = 1;
-	}
-
+    cout << "Pea generated SnowPea" << endl;
+    peaPtr = new Pea * [1];
+    peaPtr[0] = new WhitePea(position.getX() + 83, position.getY(), 1, 1, 0, 3); 
+    peaGenerated = 1;
+    for (int i = 0; i < numOfPea; i++) {
+        peaPtr[i]->isPresent = 1;
+    }
 }

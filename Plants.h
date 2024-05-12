@@ -2,9 +2,9 @@
 #ifndef Plants_H
 #define Plants_H
 #include"Entity.h"
-#include"Zombie.h"
 #include"Tile.h"
 #include <SFML/Graphics.hpp>
+#include"Zombie.h"
 class Zombie;	
 class Plants :public Entity{
 public:

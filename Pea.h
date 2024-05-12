@@ -12,7 +12,7 @@ public:
 	virtual ~Pea();
 	void display(sf::RenderWindow& Window);
 	void movement();
-	void collisionCheck(Zombie**& zombieEntities, int, bool &, int& numZom);
+	virtual void collisionCheck(Zombie**& zombieEntities, int, bool &, int& numZom)=0;
 	void takeDamage();
 	void setX(int);
 	void setY(int);

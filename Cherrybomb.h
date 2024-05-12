@@ -5,6 +5,7 @@
 class Cherrybomb : public NonShooter
 {
 	sf::IntRect rectSourceSprite;
+	bool blast;
 public:
 	bool present;
 	Cherrybomb(int xPos, int yPos, int h, int w, int hp);

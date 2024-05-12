@@ -7,9 +7,15 @@
 #include"SunflowerFields.h"
 #include <SFML/Graphics.hpp>
 #include <ctime>
+#include "MenuScreen.h"
+#include "InstructionScreen.h"
+#include "NameScreen.h"
+#include"WinScreen.h"
+#include"LoseScreen.h"
 using namespace std;
 
 class Game {
+	int score;
 	int totalLevels;
 	int coins;
 	Levels** level;
@@ -20,6 +26,12 @@ class Game {
 	sf::RectangleShape grid;
 	bool newLevelCheck;
 	int lives;
+	MenuScreen menuScreen;
+	InstructionScreen instructionScreen;
+	NameScreen nameScreen;
+	WinScreen winScreen;
+	LoseScreen loseScreen;
+
 public:
 	int& getLives();
 	Game();

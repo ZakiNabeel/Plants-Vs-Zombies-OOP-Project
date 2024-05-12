@@ -26,8 +26,8 @@ void ZombieFactory::addZombies(int xPos, int yPos, int h=1, int w=1, int hit=3, 
 		while (current < size) {
 			check = rand() % 2;
 			cout << check << "-------------------" << check << endl;
-			if (check == 0)zombiePtr[current] = new SimpleZombies(1200 + 100 * (rand() % 5), ((rand() % 5) * 100) + 70, h, w, 3, s);
-			else if (check == 1)zombiePtr[current] = new FootballZombies(1200 + 100 * (rand() % 5), ((rand() % 5) * 100) + 70, h, w, 5, s);
+			if (check == 0)zombiePtr[current] = new SimpleZombies(1200 + 100 * (rand() % 5), ((rand() % 5) * 100) + 70, h, w, 3, 3);
+			else if (check == 1)zombiePtr[current] = new FootballZombies(1200 + 100 * (rand() % 5), ((rand() % 5) * 100) + 70, h, w, 5, 5);
 			++current;
 		}
 	}
@@ -36,10 +36,10 @@ void ZombieFactory::addZombies(int xPos, int yPos, int h=1, int w=1, int hit=3, 
 		while (current < size) {
 			check = rand() % 4;
 			cout << check << "-------------------" << check << endl;
-			if (check == 0)zombiePtr[current] = new SimpleZombies(1200 + 100 * (rand() % 5), ((rand() % 5) * 100) + 70, h, w, 3, s);
-			else if (check == 1)zombiePtr[current] = new FootballZombies(1200 + 100 * (rand() % 3), ((rand() % 5) * 100) + 70, h, w, 5, s);
-			else if (check == 2)zombiePtr[current] = new DancingZombies(1200 + 100 * (rand() % 1), ((rand() % 5) * 100) + 70, h, w, 2, s);
-			else if (check == 3)zombiePtr[current] = new FlyingZombies(1200 + 100 * (rand() % 3), ((rand() % 5) * 100) + 70, h, w, 2, s);
+			if (check == 0)zombiePtr[current] = new SimpleZombies(1200 + 100 * (rand() % 5), ((rand() % 5) * 100) + 70, h, w, 3, 3);
+			else if (check == 1)zombiePtr[current] = new FootballZombies(1200 + 100 * (rand() % 3), ((rand() % 5) * 100) + 70, h, w, 5, 5);
+			else if (check == 2)zombiePtr[current] = new DancingZombies(1200 + 100 * (rand() % 1), ((rand() % 5) * 100) + 70, h, w, 2, 4);
+			else if (check == 3)zombiePtr[current] = new FlyingZombies(1200 + 100 * (rand() % 3), ((rand() % 5) * 100) + 70, h, w, 2,6);
 			++current;
 		}
 	}
@@ -48,11 +48,13 @@ void ZombieFactory::addZombies(int xPos, int yPos, int h=1, int w=1, int hit=3, 
 		int containerY = 0;
 		while (current < size) {
 			check = rand() % 4;
-			if (check == 0 && containerY!=370)zombiePtr[current] = new SimpleZombies(1200 + 100 * (rand() % 5), ((rand() % 5) * 100) + 70, h, w, 3, s);
-			else if (check == 1 && containerY != 370)zombiePtr[current] = new FootballZombies(1200 + 100 * (rand() % 3), ((rand() % 5) * 100) + 70, h, w, 5, s);
-			else if (check == 2 && containerY != 370)zombiePtr[current] = new DancingZombies(1200 + 100 * (rand() % 3), ((rand() % 5) * 100) + 70, h, w, 2, s);
-			else if (check == 3 )zombiePtr[current] = new DolphinRiderZombies(1200 + 100 * (rand() % 3), 370, h, w, 5, s);
-			else if(check==4 && containerY != 370)zombiePtr[current] = new FlyingZombies(1200 + 100 * (rand() % 3), ((rand() % 5) * 100) + 70, h, w, 4, s);
+			containerY = ((rand() % 5) * 100) + 70;
+			if (check == 0 && containerY!=270)zombiePtr[current] = new SimpleZombies(1200 + 100 * (rand() % 5),containerY, h, w, 3, 3);
+			else if (check == 1 && containerY != 270)zombiePtr[current] = new FootballZombies(1200 + 100 * (rand() % 3), containerY, h, w, 5, 5);
+			else if (check == 2 && containerY != 270)zombiePtr[current] = new DancingZombies(1200 + 100 * (rand() % 3), containerY, h, w, 2, 4);
+			else if (check == 3 )zombiePtr[current] = new DolphinRiderZombies(1200 + 100 * (rand() % 3), 270, h, w, 5, 5);
+			else if(check==4 && containerY != 270)zombiePtr[current] = new FlyingZombies(1200 + 100 * (rand() % 3), containerY, h, w, 4, 6);
+			else zombiePtr[current] = new DolphinRiderZombies(1200 + 100 * (rand() % 3), 270, h, w, 5, 5);
 			++current;
 			cout << "Added " << current << endl;
 		}

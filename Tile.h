@@ -24,7 +24,6 @@ public:
 	int getWidth();
 	bool getSpace();
 	void display(sf::RenderWindow& Window);
-	bool collisionCheck();
 	void setGridPosition(int x, int y);
 };
 #endif

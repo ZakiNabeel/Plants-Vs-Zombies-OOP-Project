@@ -18,6 +18,7 @@ public:
 	void movementLeft();
 	void movementRight();
 	int getSpeed();
+	void setSpeed(int);
 	void movementVerticalUp();
 	//virtual void setSpeed(int);
 	//Speed funtions added.

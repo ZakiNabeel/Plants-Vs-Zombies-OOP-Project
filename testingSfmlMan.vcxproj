@@ -19,7 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="LoseScreen.h" />
+    <ClInclude Include="MenuScreen.h" />
+    <ClInclude Include="InstructionScreen.h" />
     <ClInclude Include="BeginersGarden.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="Cherrybomb.h" />
     <ClInclude Include="DancingZombies.h" />
     <ClInclude Include="DolphinRiderZombies.h" />
@@ -29,11 +33,14 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="LawnMover.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="NameScreen.h" />
     <ClInclude Include="NonShooter.h" />
     <ClInclude Include="Peashooter.h" />
     <ClInclude Include="PlantFactory.h" />
     <ClInclude Include="Plants.h" />
     <ClInclude Include="Repeater.h" />
+    <ClInclude Include="ScoreBoardScreen.h" />
+    <ClInclude Include="Screen.h" />
     <ClInclude Include="Shooter.h" />
     <ClInclude Include="SnowPea.h" />
     <ClInclude Include="Sprite.h" />
@@ -50,19 +57,25 @@
     <ClInclude Include="Sun.h" />
     <ClInclude Include="Walknut.h" />
     <ClInclude Include="WhitePea.h" />
+    <ClInclude Include="WinScreen.h" />
     <ClInclude Include="Zombie.h" />
     <ClInclude Include="ZombieFactory.h" />
     <ClInclude Include="ZombieOutskirts.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BeginersGarden.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Cherrybomb.cpp" />
     <ClCompile Include="DancingZombies.cpp" />
     <ClCompile Include="DolphinRiderZombie.cpp" />
     <ClCompile Include="FlyingZombies.cpp" />
     <ClCompile Include="FootballZombies.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="InstructionScreen.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="LoseScreen.cpp" />
+    <ClCompile Include="MenuScreen.cpp" />
+    <ClCompile Include="NameScreen.cpp" />
     <ClCompile Include="NonShooter.cpp" />
     <ClCompile Include="NormalPea.cpp" />
     <ClCompile Include="Entity.cpp" />
@@ -74,11 +87,14 @@
     <ClCompile Include="Plants.cpp" />
     <ClCompile Include="Position.cpp" />
     <ClCompile Include="Repeater.cpp" />
+    <ClCompile Include="ScoreBoardScreen.cpp" />
+    <ClCompile Include="Screen.cpp" />
     <ClCompile Include="Shooter.cpp" />
     <ClCompile Include="SimpleZombies.cpp" />
     <ClCompile Include="SnowPea.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="SunflowerFields.cpp" />
+    <ClCompile Include="WinScreen.cpp" />
     <ClCompile Include="ZombieOutskirts.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Sun.cpp" />
@@ -86,7 +102,7 @@
     <ClCompile Include="Sunflower.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Walknut.cpp" />
-    <ClCompile Include="WhitePeacpp.cpp" />
+    <ClCompile Include="WhitePea.cpp" />
     <ClCompile Include="Zombie.cpp" />
     <ClCompile Include="ZombieFactory.cpp" />
   </ItemGroup>
